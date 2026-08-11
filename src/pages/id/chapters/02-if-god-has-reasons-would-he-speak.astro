@@ -3,11 +3,11 @@ import Layout from '../../../components/Layout.astro';
 import EpistemicLedger from '../../../components/EpistemicLedger.astro';
 import ArgumentMap from '../../../components/ArgumentMap.astro';
 import SourceDrawer from '../../../components/SourceDrawer.astro';
-import { POE_MAP } from '../../../data/chapterMaps';
+import { REV_MAP } from '../../../data/chapterMaps';
 import { getCollection } from 'astro:content';
 
 const lang = 'id' as const;
-const slug = '01-if-god-already-knew-why-create';
+const slug = '02-if-god-has-reasons-would-he-speak';
 
 const allChapters = await getCollection('chapters', ({ data }) => data.language === 'id');
 const chapter = allChapters.find((c) => c.data.chapter_slug === slug);
@@ -41,25 +41,25 @@ const chapterSources = chapter.data.sources_used
 <Layout
   title={chapter.data.title_id || chapter.data.title}
   lang={lang}
-  description="Bab 1 — Jika Allah sudah tahu segalanya, mengapa tetap menciptakan dunia?"
+  description="Bab 2 — Jika Allah punya alasan yang tak terlihat, apakah Allah akan berbicara?"
 >
   <p
     style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-soft); margin: 0 0 var(--gap-1) 0;"
   >
-    Bab 1
+    Bab 2
   </p>
 
   <Content />
 
   <ArgumentMap
     lang={lang}
-    nodes={POE_MAP.nodes}
-    edges={POE_MAP.edges}
-    title="Peta argumen (15 langkah, 3 lapisan)"
+    nodes={REV_MAP.nodes}
+    edges={REV_MAP.edges}
+    title="Peta argumen (9 langkah, 3 lapisan)"
     intro="Ketuk sebuah titik untuk membaca uraian lengkapnya. Garis menunjukkan keterkaitan yang dipilih, bukan semua keterkaitan."
     legend={['Lapisan 1 — pengertian dasar', 'Lapisan 2 — masalah dan jawaban', 'Lapisan 3 — kesimpulan']}
     layerLabels={['L1', 'L2', 'L3']}
-    ariaLabel="Peta argumen dengan 15 langkah"
+    ariaLabel="Peta argumen dengan 9 langkah"
   />
 
   <EpistemicLedger

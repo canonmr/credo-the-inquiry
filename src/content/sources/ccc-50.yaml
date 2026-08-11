@@ -1,0 +1,19 @@
+---
+source_id: ccc-50
+author: Catholic Church (Catechism of the Catholic Church, 2nd ed.)
+title: "CCC §50 — Revelation: an order of knowledge beyond natural reason"
+date: "1997"
+source_type: church-document
+language: en
+edition: English translation for the United States, 1994 (2nd ed. 1997)
+location: Part One, Section One, Chapter Two, Article 1, §50
+original_quote: "By natural reason man can know God with certainty, on the basis of his works. But there is another order of knowledge, which man cannot possibly arrive at by his own powers: the order of divine Revelation."
+translation: "(official USCCB English translation; reproduced verbatim)"
+paraphrase: "The Catechism distinguishes two orders of knowledge of God: what natural reason can reach from God's works, and what only God's free self-communication ('divine Revelation') can reach."
+verification_status: VERIFIED
+notes: "CCC §50 opens Chapter Two on 'God comes to meet man'. Vatican I, Dei Filius (1870) is cited in the footnotes (DS 3004). Primary source for REV-002, REV-005, REV-006."
+supports_nodes:
+  - REV-002
+  - REV-005
+  - REV-006
+changes: []

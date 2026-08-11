@@ -3,6 +3,7 @@ import Layout from '../../../components/Layout.astro';
 import EpistemicLedger from '../../../components/EpistemicLedger.astro';
 import ArgumentMap from '../../../components/ArgumentMap.astro';
 import SourceDrawer from '../../../components/SourceDrawer.astro';
+import { POE_MAP } from '../../../data/chapterMaps';
 import { getCollection } from 'astro:content';
 
 const lang = 'en' as const;
@@ -50,7 +51,16 @@ const chapterSources = chapter.data.sources_used
 
   <Content />
 
-  <ArgumentMap lang={lang} />
+  <ArgumentMap
+    lang={lang}
+    nodes={POE_MAP.nodes}
+    edges={POE_MAP.edges}
+    title="Argument map (15 nodes, 3 layers)"
+    intro="Tap a node to open its full record. Arrows show selected structural dependencies, not every relation."
+    legend={['Layer 1 — conceptual disambiguation', 'Layer 2 — problem and defense', 'Layer 3 — synthesis']}
+    layerLabels={['L1', 'L2', 'L3']}
+    ariaLabel="Map of 15 POE nodes"
+  />
 
   <EpistemicLedger
     established={chapter.data.epistemic_ledger.established}

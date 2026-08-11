@@ -1,0 +1,18 @@
+---
+source_id: schellenberg-1993
+author: "J. L. Schellenberg"
+title: "Divine Hiddenness and Human Reason"
+date: "1993"
+source_type: primary-philosophical
+language: en
+edition: Cornell University Press, Ithaca
+location: Chapter 1, 'The hiddenness of God'
+original_quote: "If God exists and is a personal God, then he is a perfectly loving being... the love that God has for his creatures... would involve an ultimate salvific interest in each and every one of them... such love would be expressed, on God's part, in a way that would make the existence of God evident to every creature capable of relating to God."
+translation: "(Paraphrase of Schellenberg's central argument, lacking a single verbatim quotation; exact wording in the book formulation: 'If there is a God, he is perfectly loving,' where a perfectly loving God would not permit nonresistant nonbelief. See chapter 1 and the summary in the introduction.)"
+paraphrase: "Schellenberg's hiddenness argument: if God exists and is perfectly loving, then God would make his existence sufficiently evident to all capable and nonresistant persons so that they could enter into a personal relationship with him; but there are in fact nonresistant nonbelievers who sincerely seek God and find nothing; therefore a perfectly loving God does not exist."
+verification_status: PARTIALLY VERIFIED
+notes: "WARNING: the 'original_quote' field here is a controlled paraphrase, not a verbatim quotation, because no verified verbatim text was available in this project; the SE article 'Divine Hiddenness' (Schellenberg 2017) summarizes the argument in these terms. Treat as paraphrase, not quotation."
+supports_nodes:
+  - REV-004
+  - REV-008
+changes: []

@@ -1,0 +1,34 @@
+---
+import Layout from '../../../components/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'id' as const;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const chapters = (await getCollection('chapters', ({ data }) => data.language === 'id')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Layout title="Bab" lang={lang} description="Daftar bab CREDO The Inquiry.">
+  <h1>Bab</h1>
+  <p>
+    Setiap bab menelusuri satu pertanyaan besar, langkah demi langkah — dengan node argumen, sumber yang
+    diverifikasi, dan catatan jujur tentang apa yang belum terjawab.
+  </p>
+
+  <ul style="list-style: none; padding-left: 0;" class="reveal-stagger">
+    {
+      chapters.map((c) => (
+        <li class="node-item">
+          <div style="font-family: var(--font-mono); font-size: var(--fs-tiny); color: var(--color-ink-faint); margin-bottom: 4px;">
+            Bab {c.data.order} · {c.data.nodes_used.length} langkah · {c.data.sources_used.length} sumber
+          </div>
+          <h3>
+            <a href={`${base}/id/chapters/${c.data.chapter_slug}`}>{c.data.title_id || c.data.title}</a>
+          </h3>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

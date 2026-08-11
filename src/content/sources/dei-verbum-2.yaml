@@ -1,0 +1,18 @@
+---
+source_id: dei-verbum-2
+author: "Vatican Council II (Dei Verbum, Dogmatic Constitution on Divine Revelation)"
+title: "Dei Verbum 2 — Revelation as the unfolding of God's goodness"
+date: "1965"
+source_type: church-document
+language: en
+edition: Official English translation (Vatican website)
+location: Chapter 1, article 2
+original_quote: "In His goodness and wisdom God chose to reveal Himself and to make known to us the hidden purpose of His will by which through Christ, the Word made flesh, man might in the Holy Spirit have access to the Father and come to share in the divine nature. Through this revelation, therefore, the invisible God, out of the abundance of His love, speaks to men as friends and lives among them, so that He may invite and take them into fellowship with Himself."
+translation: "(official Vatican English translation; reproduced verbatim)"
+paraphrase: "Dei Verbum 2 states the purpose of revelation: God, of his own free goodness, reveals the hidden purpose of his will, so that through Christ, in the Holy Spirit, human beings may have access to the Father, share the divine nature, and be invited into friendship and fellowship with God."
+verification_status: VERIFIED
+notes: "Primary conciliar source for the whole chapter on revelation. Also cited: DV 4 (God speaks through the Son), DV 6 (creation as enduring witness)."
+supports_nodes:
+  - REV-002
+  - REV-006
+changes: []

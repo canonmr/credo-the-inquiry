@@ -1,0 +1,17 @@
+---
+source_id: aquinas-st-i-q2
+author: "Thomas Aquinas"
+title: "Summa Theologiae, I, q. 2 — The existence of God"
+date: "c. 1265-1274"
+source_type: primary-theological
+language: en
+edition: "Summa Theologiae, Prima Pars, q. 2, a. 1-3 (English: Blackfriars ed.)"
+location: Prima Pars, q. 2, aa. 1-3
+original_quote: "Whether the existence of God is self-evident? ... To know that God exists in a general and confused way is implanted in us by nature... but that God exists in the absolute sense, we cannot know by our natural reason except through his effects, since effects depend on their cause."
+translation: "(Controlled paraphrase of ST I, q. 2, a. 1 and a. 2, ad 3 and obj. 3; not a verbatim quotation.)"
+paraphrase: "Aquinas argues that the existence of God is not self-evident to us, that it can be demonstrated from effects by natural reason, and that knowledge of God's existence 'in the absolute sense' requires demonstration from creatures — a natural-knowledge thesis that Vatican I and the Catechism (§36) repeat."
+verification_status: PARTIALLY VERIFIED
+notes: "WARNING: 'original_quote' is a controlled paraphrase of ST I, q. 2, a. 1-2; exact Latin wording differs. The five ways are in a. 3."
+supports_nodes:
+  - REV-005
+changes: []

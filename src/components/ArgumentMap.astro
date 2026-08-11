@@ -1,67 +1,28 @@
 ---
 /*
   ArgumentMap.astro
-  Inline-SVG visualization of the 15 Phase-0 POE nodes, grouped by layer.
+  Inline-SVG visualization of an argument node cluster, grouped by layer.
+  Prop-driven: each chapter supplies its own node layout + edges.
   No D3. No animation. Honors prefers-reduced-motion via global CSS.
   Mobile: shows nodes, layer bands, and the dominant inter-layer edges.
   Desktop: same, scaled up; legend visible.
 */
 export interface Props {
   lang: 'id' | 'en';
+  nodes: Record<string, [number, number, 1 | 2 | 3]>;
+  edges: Array<[string, string, string]>;
+  title: string;
+  intro: string;
+  legend: [string, string, string];
+  layerLabels: [string, string, string];
+  ariaLabel: string;
 }
 
 const p = Astro.props as Props;
 const isId = p.lang === 'id';
 
-// Node positions (manually laid out for the 15 Phase-0 nodes).
-// Format: id -> [x, y, layer]
 const W = 720;
 const H = 440;
-const nodes: Record<string, [number, number, 1 | 2 | 3]> = {
-  'POE-001': [70, 70, 1],
-  'POE-002': [190, 70, 1],
-  'POE-003': [310, 70, 1],
-  'POE-004': [430, 70, 1],
-  'POE-005': [550, 70, 1],
-  'POE-006': [670, 70, 1],
-  'POE-007': [70, 220, 2],
-  'POE-008': [190, 220, 2],
-  'POE-009': [310, 220, 2],
-  'POE-010': [430, 220, 2],
-  'POE-011': [550, 220, 2],
-  'POE-012': [670, 220, 2],
-  'POE-013': [240, 370, 3],
-  'POE-014': [420, 370, 3],
-  'POE-015': [600, 370, 3],
-};
-
-// Selected edges. Showing all related_nodes would clutter the mobile view.
-// We draw the strongest structural edges: inter-layer dependencies + the
-// central "logical problem / defense" pair.
-const edges: Array<[string, string, string]> = [
-  // Layer 1 -> Layer 2 (foundations feed the problems)
-  ['POE-001', 'POE-007', 'feeds'],
-  ['POE-005', 'POE-007', 'feeds'],
-  ['POE-006', 'POE-007', 'feeds'],
-  ['POE-006', 'POE-008', 'modally'],
-  ['POE-005', 'POE-008', 'feeds'],
-  ['POE-007', 'POE-008', 'responds to'],
-  ['POE-007', 'POE-009', 'extends'],
-  // Layer 2 -> Layer 2 (internal)
-  ['POE-009', 'POE-010', 'specifies'],
-  ['POE-008', 'POE-011', 'extends'],
-  ['POE-011', 'POE-012', 'is targeted by'],
-  // Layer 2/3 -> Layer 3 (synthesis)
-  ['POE-009', 'POE-013', 'is met by'],
-  ['POE-010', 'POE-013', 'is met by'],
-  ['POE-014', 'POE-015', 'is held by'],
-  ['POE-008', 'POE-014', 'feeds'],
-  ['POE-011', 'POE-014', 'feeds'],
-  ['POE-013', 'POE-015', 'frames'],
-  ['POE-005', 'POE-015', 'is held by'],
-  ['POE-010', 'POE-015', 'is held by'],
-  ['POE-011', 'POE-015', 'is held by'],
-];
 
 const layerColor: Record<1 | 2 | 3, string> = {
   1: '#6b3f2b',
@@ -70,7 +31,7 @@ const layerColor: Record<1 | 2 | 3, string> = {
 };
 
 function findNodeXY(id: string): [number, number] {
-  const n = nodes[id];
+  const n = p.nodes[id];
   if (!n) return [0, 0];
   return [n[0], n[1]];
 }
@@ -80,28 +41,18 @@ const nodesHref = (id: string) =>
 ---
 
 <section class="argument-map" aria-labelledby="map-heading">
-  <h3 id="map-heading">
-    {isId ? 'Peta argumen (15 langkah, 3 lapisan)' : 'Argument map (15 nodes, 3 layers)'}
-  </h3>
+  <h3 id="map-heading">{p.title}</h3>
   <div class="legend" aria-hidden="true">
-    <span class="l1">{isId ? 'Lapisan 1 — pengertian dasar' : 'Layer 1 — conceptual disambiguation'}</span>
-    <span class="l2">{isId ? 'Lapisan 2 — masalah dan jawaban' : 'Layer 2 — problem and defense'}</span>
-    <span class="l3">{isId ? 'Lapisan 3 — kesimpulan' : 'Layer 3 — synthesis'}</span>
+    <span class="l1">{p.legend[0]}</span>
+    <span class="l2">{p.legend[1]}</span>
+    <span class="l3">{p.legend[2]}</span>
   </div>
   <p
     style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin: 0 0 var(--gap-2) 0;"
   >
-    {
-      isId
-        ? 'Ketuk sebuah titik untuk membaca uraian lengkapnya. Garis menunjukkan keterkaitan yang dipilih, bukan semua keterkaitan.'
-        : 'Tap a node to open its full record. Arrows show selected structural dependencies, not every relation.'
-    }
+    {p.intro}
   </p>
-  <svg
-    viewBox={`0 0 ${W} ${H}`}
-    role="img"
-    aria-label={isId ? 'Peta argumen dengan 15 langkah' : 'Map of 15 POE nodes'}
-  >
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={p.ariaLabel}>
     {/* Layer bands */}
     <rect x="0" y="20" width={W} height="100" fill="rgba(107, 63, 43, 0.05)"></rect>
     <rect x="0" y="170" width={W} height="100" fill="rgba(47, 93, 80, 0.05)"></rect>
@@ -114,7 +65,7 @@ const nodesHref = (id: string) =>
 
     {/* Edges */}
     {
-      edges.map(([from, to, label]) => {
+      p.edges.map(([from, to, label]) => {
         const [x1, y1] = findNodeXY(from);
         const [x2, y2] = findNodeXY(to);
         const midX = (x1 + x2) / 2;
@@ -132,7 +83,7 @@ const nodesHref = (id: string) =>
 
     {/* Nodes */}
     {
-      Object.entries(nodes).map(([id, [x, y, layer]]) => (
+      Object.entries(p.nodes).map(([id, [x, y, layer]]) => (
         <a href={nodesHref(id)}>
           <g class={`node l${layer}`}>
             <circle cx={x} cy={y} r="22" fill={layerColor[layer]} />
@@ -144,7 +95,7 @@ const nodesHref = (id: string) =>
               font-family="var(--font-sans)"
               font-size="9"
             >
-              {id.replace('POE-', '')}
+              {id.replace(/^[A-Z]+-/, '')}
             </text>
           </g>
         </a>
