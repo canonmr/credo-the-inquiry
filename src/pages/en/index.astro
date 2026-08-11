@@ -15,51 +15,50 @@ const sources = await getCollection('sources');
 <Layout
   title="Home"
   lang={lang}
-  description="Interactive Christian Inquiry Project — Phase 0 prototype. Deeper questions, not slogans."
+  description="CREDO The Inquiry — A structured inquiry into faith and reason, from foundational questions to theological conclusions."
 >
   <h1>CREDO The Inquiry</h1>
   <p
     style="font-family: var(--font-sans); color: var(--color-ink-soft); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 var(--gap-2) 0;"
   >
-    Phase 0 prototype — mobile-first, source-grounded, logically disciplined
+    Faith and reason, structured as argument
   </p>
 
   <p>
-    An interactive knowledge system for tracing a chain of questions: the problem of evil → divine
-    foreknowledge → causation → freedom → permission → suffering → theism → revelation → Jesus → resurrection
-    → apostles → Scripture → Tradition → Church → authority → Catholic claim.
+    A structured inquiry: from the problem of evil to the claims of the Church, every step is tested logically
+    and grounded in sources. No slogans. No scoring. Only arguments you can verify yourself.
   </p>
 
   <p>
-    The project is not merely an apologetics article collection. Its core asset is the structured argument and
-    source graph behind the presentation. Visualizations explain reasoning. Worldviews are not given numerical
-    scores.
+    The first chapter presents 15 steps of reasoning on divine foreknowledge, human freedom, and the existence
+    of evil. Each step contains a claim, premises, a conclusion, the strongest objection — and its epistemic
+    status.
   </p>
 
   <h2>Start here</h2>
-  <ul>
+  <ul class="reveal-stagger">
     {
       chapters.map((c) => (
         <li>
           <strong>Chapter {c.data.order}:</strong>{' '}
           <a href={`${base}/en/chapters/${c.data.chapter_slug}`}>{c.data.title}</a>
-          <div style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft);">
-            {c.data.nodes_used.length} argument nodes · {c.data.sources_used.length} sources
+          <div style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-faint);">
+            {c.data.nodes_used.length} steps · {c.data.sources_used.length} sources
           </div>
         </li>
       ))
     }
   </ul>
 
-  <h2>Counts</h2>
-  <ul>
-    <li><a href={`${base}/en/nodes`}>{nodes.length} argument nodes</a> (POE-001 through POE-015)</li>
+  <h2>Site structure</h2>
+  <ul class="reveal-stagger">
+    <li><a href={`${base}/en/nodes`}>{nodes.length} argument steps</a> (POE-001 through POE-015)</li>
     <li>
-      <a href={`${base}/en/sources`}>{sources.length} source records</a> (CCC, primary philosophy, patristic, reference)
+      <a href={`${base}/en/sources`}>{sources.length} sources</a> — Scripture, theology, church documents, scholarship
     </li>
   </ul>
 
-  <h2>Non-negotiable rules</h2>
+  <h2>Reasoning principles</h2>
   <ol>
     <li>No invented quotations, sources, page numbers, or Catholic doctrine.</li>
     <li>Textual claims are kept separate from theological claims.</li>

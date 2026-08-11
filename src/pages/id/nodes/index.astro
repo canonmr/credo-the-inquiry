@@ -50,31 +50,24 @@ const domainLabel = (d: string): string =>
     .join('; ');
 ---
 
-<Layout
-  title="Langkah-langkah argumen"
-  lang={lang}
-  description="Daftar langkah argumen (POE) untuk CREDO The Inquiry."
->
-  <h1>Langkah-langkah argumen</h1>
+<Layout title="Argumen" lang={lang} description="Langkah-langkah argumen CREDO The Inquiry.">
+  <h1>Argumen</h1>
   <p>
     Bab pertama memakai 15 langkah argumen. Setiap langkah memuat pernyataan inti, alasan-alasannya,
-    kesimpulan, keberatan terkuat, dan apa yang tidak dapat dibuktikannya.
+    kesimpulan, keberatan terkuat, dan batasan pembuktiannya.
   </p>
 
-  <ul style="list-style: none; padding-left: 0;">
+  <ul style="list-style: none; padding-left: 0;" class="reveal-stagger">
     {
       sorted.map((node) => (
-        <li style="border: var(--border); border-radius: var(--radius); padding: var(--gap-2); margin-bottom: var(--gap-2); background: var(--color-paper-2);">
-          <div style="font-family: var(--font-mono); font-size: var(--fs-tiny); color: var(--color-ink-soft);">
+        <li class="node-item">
+          <div style="font-family: var(--font-mono); font-size: var(--fs-tiny); color: var(--color-ink-faint); margin-bottom: 4px;">
             {node.data.id} · L{node.data.layer} ·{' '}
-            <span
-              class={`status ${node.data.inference_status}`}
-              style="display: inline-block; font-family: var(--font-sans); font-size: var(--fs-tiny); padding: 1px 6px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.06em; border: 1px solid var(--color-line);"
-            >
+            <span class={`status ${node.data.inference_status}`}>
               {statusLabel(node.data.inference_status)}
             </span>
           </div>
-          <h3 style="font-family: var(--font-sans); font-size: var(--fs-h3); margin: 4px 0;">
+          <h3>
             <a href={`${base}/id/nodes/${node.data.id}`}>{node.data.title}</a>
           </h3>
           <p style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin: 0;">

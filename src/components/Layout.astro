@@ -61,10 +61,29 @@ const switchTitle = isId ? 'Switch to English' : 'Beralih ke Bahasa Indonesia';
       <p>
         {
           isId
-            ? 'CREDO The Inquiry — edisi awal. Setiap kutipan diperiksa terhadap teks aslinya; tidak ada kutipan atau doktrin yang dikarang.'
-            : 'CREDO The Inquiry — Phase 0 prototype. Content is governed by the knowledge base; quotations must be verified against official texts.'
+            ? 'CREDO The Inquiry — Setiap kutipan diverifikasi terhadap teks aslinya.'
+            : 'CREDO The Inquiry — Every quotation verified against its source text.'
         }
       </p>
     </footer>
+
+    <script>
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+        );
+        document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => observer.observe(el));
+      } else {
+        document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => el.classList.add('visible'));
+      }
+    </script>
   </body>
 </html>

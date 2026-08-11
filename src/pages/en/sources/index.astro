@@ -8,28 +8,26 @@ const all = await getCollection('sources');
 const sorted = all.sort((a, b) => a.data.source_id.localeCompare(b.data.source_id));
 ---
 
-<Layout title="Sources" lang={lang} description="List of source records for CREDO The Inquiry.">
+<Layout title="Sources" lang={lang} description="Sources for CREDO The Inquiry.">
   <h1>Sources</h1>
   <p>
-    A list of source records for the Phase 0 prototype. Each record carries a verified original quote, a
-    translation where relevant, a paraphrase, and a verification status. No quotations, page numbers, or
-    doctrines are invented.
+    All sources cited in this inquiry: original quotations, translations, and verification status. No
+    doctrines or quotations are invented.
   </p>
 
-  <ul style="list-style: none; padding-left: 0;">
+  <ul style="list-style: none; padding-left: 0;" class="reveal-stagger">
     {
       sorted.map((src) => (
-        <li style="border: var(--border); border-radius: var(--radius); padding: var(--gap-2); margin-bottom: var(--gap-2); background: var(--color-paper-2);">
-          <div style="font-family: var(--font-mono); font-size: var(--fs-tiny); color: var(--color-ink-soft);">
+        <li class="source-item">
+          <div style="font-family: var(--font-mono); font-size: var(--fs-tiny); color: var(--color-ink-faint); margin-bottom: 4px;">
             {src.data.source_id} ·{' '}
             <span
               class={`verif ${src.data.verification_status === 'PARTIALLY VERIFIED' ? 'PARTIALLY' : src.data.verification_status}`}
-              style="display: inline-block; font-family: var(--font-sans); font-size: var(--fs-tiny); padding: 1px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em; border: 1px solid var(--color-line);"
             >
               {src.data.verification_status}
             </span>
           </div>
-          <h3 style="font-family: var(--font-sans); font-size: var(--fs-h3); margin: 4px 0;">
+          <h3>
             <a href={`${base}/en/sources/${src.data.source_id}`}>{src.data.title}</a>
           </h3>
           <p style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin: 0;">

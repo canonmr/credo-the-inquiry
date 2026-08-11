@@ -15,52 +15,52 @@ const sources = await getCollection('sources');
 <Layout
   title="Beranda"
   lang={lang}
-  description="Proyek Inkuiri Kristen Interaktif — edisi awal. Pertanyaan yang lebih dalam, bukan slogan."
+  description="CREDO The Inquiry — Inkuiri iman dan akal budi yang terstruktur, dari pertanyaan mendasar hingga kesimpulan teologis."
 >
   <h1>CREDO The Inquiry</h1>
   <p
     style="font-family: var(--font-sans); color: var(--color-ink-soft); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 var(--gap-2) 0;"
   >
-    Edisi awal — untuk dibaca di telepon genggam, berpegangan pada sumber, dan tertib dalam berpikir
+    Iman dan akal budi dalam satu rangkaian penalaran
   </p>
 
   <p>
-    Situs ini mengajak Anda menelusuri satu rangkaian pertanyaan: masalah kejahatan → pengetahuan Allah akan
-    masa depan → sebab-akibat → kebebasan → izin → penderitaan → kepercayaan akan Allah → wahyu → Yesus →
-    kebangkitan → para rasul → Kitab Suci → Tradisi → Gereja → otoritas → klaim Katolik.
+    Sebuah inkuiri terstruktur: dari masalah kejahatan hingga klaim gereja, setiap langkah diuji secara logis
+    dan dirujuk kepada sumbernya. Tanpa slogan. Tanpa scoring. Hanya argumen yang bisa Anda verifikasi
+    sendiri.
   </p>
 
   <p>
-    Ini bukan kumpulan artikel biasa. Setiap pernyataan disusun langkah demi langkah, dan setiap langkah
-    menunjuk pada sumbernya, supaya Anda dapat melihat sendiri mana yang sudah dapat dipastikan, mana yang
-    masih diperdebatkan, dan mana yang belum dapat dipastikan. Tidak ada nilai atau peringkat untuk pandangan
-    dunia mana pun.
+    Bab pertama memaparkan 15 langkah penalaran tentang pengetahuan Allah, kebebasan manusia, dan keberadaan
+    kejahatan. Setiap langkah memuat pernyataan, alasan, kesimpulan, serta keberatan terkuat — beserta status
+    epistemiknya.
   </p>
 
-  <h2>Dimulai dari sini</h2>
-  <ul>
+  <h2>Mulai dari sini</h2>
+  <ul class="reveal-stagger">
     {
       chapters.map((c) => (
         <li>
           <strong>Bab {c.data.order}:</strong>{' '}
           <a href={`${base}/id/chapters/${c.data.chapter_slug}`}>{c.data.title_id || c.data.title}</a>
-          <div style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft);">
-            {c.data.nodes_used.length} langkah argumen · {c.data.sources_used.length} sumber
+          <div style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-faint);">
+            {c.data.nodes_used.length} langkah · {c.data.sources_used.length} sumber
           </div>
         </li>
       ))
     }
   </ul>
 
-  <h2>Isi situs ini</h2>
-  <ul>
-    <li><a href={`${base}/id/nodes`}>{nodes.length} langkah argumen</a> (POE-001 sampai POE-015)</li>
+  <h2>Struktur situs ini</h2>
+  <ul class="reveal-stagger">
+    <li><a href={`${base}/id/nodes`}>{nodes.length} langkah argumen</a> (POE-001 hingga POE-015)</li>
     <li>
-      <a href={`${base}/id/sources`}>{sources.length} catatan sumber</a> (Katekismus, filsafat, patristik, rujukan)
+      <a href={`${base}/id/sources`}>{sources.length} sumber</a> — Kitab Suci, karya teologi, dokumen gereja, kajian
+      akademik
     </li>
   </ul>
 
-  <h2>Aturan dasar proyek ini</h2>
+  <h2>Prinsip penalaran</h2>
   <ol>
     <li>Tidak ada kutipan, sumber, nomor halaman, atau ajaran Katolik yang dikarang-karang.</li>
     <li>Apa yang dikatakan sebuah teks dipisahkan dari apa yang diyakini sebagai kebenaran.</li>

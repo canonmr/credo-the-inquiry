@@ -8,27 +8,24 @@ const all = await getCollection('argument-nodes');
 const sorted = all.sort((a, b) => a.data.id.localeCompare(b.data.id));
 ---
 
-<Layout title="Argument nodes" lang={lang} description="List of argument nodes (POE) for CREDO The Inquiry.">
-  <h1>Argument nodes</h1>
+<Layout title="Arguments" lang={lang} description="Argument steps for CREDO The Inquiry.">
+  <h1>Arguments</h1>
   <p>
-    A list of 15 argument nodes for the Phase 0 prototype. Each node carries its own claim, premises,
-    inference, conclusion, inference status, hidden assumptions, objections, and defeat condition.
+    The first chapter uses 15 argument steps. Each step contains a claim, premises, an inference, a
+    conclusion, the strongest objection, and what this argument does not establish.
   </p>
 
-  <ul style="list-style: none; padding-left: 0;">
+  <ul style="list-style: none; padding-left: 0;" class="reveal-stagger">
     {
       sorted.map((node) => (
-        <li style="border: var(--border); border-radius: var(--radius); padding: var(--gap-2); margin-bottom: var(--gap-2); background: var(--color-paper-2);">
-          <div style="font-family: var(--font-mono); font-size: var(--fs-tiny); color: var(--color-ink-soft);">
+        <li class="node-item">
+          <div style="font-family: var(--font-mono); font-size: var(--fs-tiny); color: var(--color-ink-faint); margin-bottom: 4px;">
             {node.data.id} · L{node.data.layer} ·{' '}
-            <span
-              class={`status ${node.data.inference_status}`}
-              style="display: inline-block; font-family: var(--font-sans); font-size: var(--fs-tiny); padding: 1px 6px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.06em; border: 1px solid var(--color-line);"
-            >
+            <span class={`status ${node.data.inference_status}`}>
               {node.data.inference_status.replace(/_/g, ' ')}
             </span>
           </div>
-          <h3 style="font-family: var(--font-sans); font-size: var(--fs-h3); margin: 4px 0;">
+          <h3>
             <a href={`${base}/en/nodes/${node.data.id}`}>{node.data.title}</a>
           </h3>
           <p style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin: 0;">

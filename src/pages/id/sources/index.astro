@@ -28,27 +28,26 @@ const typeLabel = (t: string): string =>
   })[t] ?? t;
 ---
 
-<Layout title="Sumber" lang={lang} description="Daftar sumber untuk CREDO The Inquiry.">
+<Layout title="Sumber" lang={lang} description="Sumber-sumber CREDO The Inquiry.">
   <h1>Sumber</h1>
   <p>
-    Semua sumber yang dipakai proyek ini, lengkap dengan kutipan aslinya, terjemahan (bila ada), dan
-    keterangan sudah diperiksa atau belum. Tidak ada kutipan, nomor halaman, atau ajaran yang dikarang-karang.
+    Seluruh sumber yang dirujuk dalam inkuiri ini: kutipan asli, terjemahan, dan status verifikasi. Tidak ada
+    doktrin atau kutipan yang dikarang.
   </p>
 
-  <ul style="list-style: none; padding-left: 0;">
+  <ul style="list-style: none; padding-left: 0;" class="reveal-stagger">
     {
       sorted.map((src) => (
-        <li style="border: var(--border); border-radius: var(--radius); padding: var(--gap-2); margin-bottom: var(--gap-2); background: var(--color-paper-2);">
-          <div style="font-family: var(--font-mono); font-size: var(--fs-tiny); color: var(--color-ink-soft);">
+        <li class="source-item">
+          <div style="font-family: var(--font-mono); font-size: var(--fs-tiny); color: var(--color-ink-faint); margin-bottom: 4px;">
             {src.data.source_id} ·{' '}
             <span
               class={`verif ${src.data.verification_status === 'PARTIALLY VERIFIED' ? 'PARTIALLY' : src.data.verification_status}`}
-              style="display: inline-block; font-family: var(--font-sans); font-size: var(--fs-tiny); padding: 1px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em; border: 1px solid var(--color-line);"
             >
               {verifLabel(src.data.verification_status)}
             </span>
           </div>
-          <h3 style="font-family: var(--font-sans); font-size: var(--fs-h3); margin: 4px 0;">
+          <h3>
             <a href={`${base}/id/sources/${src.data.source_id}`}>{src.data.title}</a>
           </h3>
           <p style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin: 0;">
