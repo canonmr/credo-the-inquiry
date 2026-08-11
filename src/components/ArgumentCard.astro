@@ -38,7 +38,7 @@ const statusLabel = (s: string): string =>
         CONTESTED: 'Diperdebatkan',
         REQUIRES_ADDITIONAL_PREMISE: 'Perlu alasan tambahan',
         UNDERDETERMINED: 'Belum dapat ditentukan',
-      })[s] ?? s
+      }[s] ?? s)
     : s.replace(/_/g, ' ');
 
 const typeLabel = (t: string): string =>
@@ -52,27 +52,28 @@ const typeLabel = (t: string): string =>
         THEOLOGICAL: 'Teologi',
         INTERPRETIVE: 'Penafsiran',
         COMPOSITE: 'Gabungan',
-      })[t] ?? t
+      }[t] ?? t)
     : t;
 
 const domainLabel = (d: string): string =>
   isId
     ? d
         .split(';')
-        .map((x) =>
-          (
-            {
-              'Philosophy': 'Filsafat',
-              'Philosophy of Religion': 'Filsafat Agama',
-              'Christian Theology': 'Teologi Kristen',
-              'Catholic Theology': 'Teologi Katolik',
-              'Biblical Studies': 'Studi Alkitab',
-              'History': 'Sejarah',
-              'Ecclesiology': 'Gereja',
-              'Patristics': 'Bapa Gereja',
-              'Apologetics': 'Apologetika',
-            } as Record<string, string>
-          )[x.trim()] ?? x.trim()
+        .map(
+          (x) =>
+            (
+              ({
+                Philosophy: 'Filsafat',
+                'Philosophy of Religion': 'Filsafat Agama',
+                'Christian Theology': 'Teologi Kristen',
+                'Catholic Theology': 'Teologi Katolik',
+                'Biblical Studies': 'Studi Alkitab',
+                History: 'Sejarah',
+                Ecclesiology: 'Gereja',
+                Patristics: 'Bapa Gereja',
+                Apologetics: 'Apologetika',
+              }) as Record<string, string>
+            )[x.trim()] ?? x.trim()
         )
         .join('; ')
     : d;
@@ -100,7 +101,9 @@ const domainLabel = (d: string): string =>
 
   <details>
     <summary
-      >{isId ? 'Lihat alasan, kesimpulan, dan keberatan' : 'Show premises, inference, and objections'}</summary
+      >{
+        isId ? 'Lihat alasan, kesimpulan, dan keberatan' : 'Show premises, inference, and objections'
+      }</summary
     >
 
     <h4

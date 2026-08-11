@@ -31,25 +31,30 @@ const typeLabel = (t: string): string =>
 const domainLabel = (d: string): string =>
   d
     .split(';')
-    .map((x) =>
-      (
-        {
-          'Philosophy': 'Filsafat',
-          'Philosophy of Religion': 'Filsafat Agama',
-          'Christian Theology': 'Teologi Kristen',
-          'Catholic Theology': 'Teologi Katolik',
-          'Biblical Studies': 'Studi Alkitab',
-          'History': 'Sejarah',
-          'Ecclesiology': 'Gereja',
-          'Patristics': 'Bapa Gereja',
-          'Apologetics': 'Apologetika',
-        } as Record<string, string>
-      )[x.trim()] ?? x.trim()
+    .map(
+      (x) =>
+        (
+          ({
+            Philosophy: 'Filsafat',
+            'Philosophy of Religion': 'Filsafat Agama',
+            'Christian Theology': 'Teologi Kristen',
+            'Catholic Theology': 'Teologi Katolik',
+            'Biblical Studies': 'Studi Alkitab',
+            History: 'Sejarah',
+            Ecclesiology: 'Gereja',
+            Patristics: 'Bapa Gereja',
+            Apologetics: 'Apologetika',
+          }) as Record<string, string>
+        )[x.trim()] ?? x.trim()
     )
     .join('; ');
 ---
 
-<Layout title="Langkah-langkah argumen" lang={lang} description="Daftar langkah argumen (POE) untuk CREDO The Inquiry.">
+<Layout
+  title="Langkah-langkah argumen"
+  lang={lang}
+  description="Daftar langkah argumen (POE) untuk CREDO The Inquiry."
+>
   <h1>Langkah-langkah argumen</h1>
   <p>
     Bab pertama memakai 15 langkah argumen. Setiap langkah memuat pernyataan inti, alasan-alasannya,

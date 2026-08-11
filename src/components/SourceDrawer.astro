@@ -28,7 +28,7 @@ const verifLabel = (v: string): string =>
         'PARTIALLY VERIFIED': 'Sebagian terverifikasi',
         UNVERIFIED: 'Belum diverifikasi',
         DISPUTED: 'Diperdebatkan',
-      })[v] ?? v
+      }[v] ?? v)
     : v;
 
 const typeLabel = (t: string): string =>
@@ -42,7 +42,7 @@ const typeLabel = (t: string): string =>
         historical: 'Sejarah',
         'scholarly-secondary': 'Kajian akademik',
         reference: 'Rujukan umum',
-      })[t] ?? t
+      }[t] ?? t)
     : t;
 ---
 
