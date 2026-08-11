@@ -19,12 +19,36 @@ export interface Props {
 const p = Astro.props as Props;
 const isId = p.lang === 'id';
 const verifClass = p.verification_status === 'PARTIALLY VERIFIED' ? 'PARTIALLY' : p.verification_status;
+
+const verifLabel = (v: string): string =>
+  isId
+    ? ({
+        VERIFIED: 'Terverifikasi',
+        'PARTIALLY VERIFIED': 'Sebagian terverifikasi',
+        UNVERIFIED: 'Belum diverifikasi',
+        DISPUTED: 'Diperdebatkan',
+      })[v] ?? v
+    : v;
+
+const typeLabel = (t: string): string =>
+  isId
+    ? ({
+        'primary-philosophical': 'Karya filsafat',
+        'primary-theological': 'Karya teologi',
+        'church-document': 'Dokumen gereja',
+        'biblical-text': 'Teks Alkitab',
+        patristic: 'Bapa Gereja',
+        historical: 'Sejarah',
+        'scholarly-secondary': 'Kajian akademik',
+        reference: 'Rujukan umum',
+      })[t] ?? t
+    : t;
 ---
 
 <article class="source-card" id={p.source_id} aria-labelledby={`${p.source_id}-title`}>
   <div class="meta">
     <span class="id">{p.source_id}</span>
-    <span class:list={['verif', verifClass]}>{p.verification_status}</span>
+    <span class:list={['verif', verifClass]}>{verifLabel(p.verification_status)}</span>
   </div>
   <h3
     class="title"
@@ -38,7 +62,7 @@ const verifClass = p.verification_status === 'PARTIALLY VERIFIED' ? 'PARTIALLY' 
     <span>·</span>
     <span>{p.date}</span>
     <span>·</span>
-    <span>{p.source_type}</span>
+    <span>{typeLabel(p.source_type)}</span>
     <span>·</span>
     <span>{p.language}</span>
   </div>

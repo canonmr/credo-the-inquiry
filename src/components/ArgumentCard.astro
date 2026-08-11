@@ -29,13 +29,60 @@ const statusClass = p.inference_status; // already a valid CSS class token
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const nodesHref = (id: string) => base + (isId ? `/id/nodes/${id}` : `/en/nodes/${id}`);
 const sourcesHref = (id: string) => base + (isId ? `/id/sources/${id}` : `/en/sources/${id}`);
+
+const statusLabel = (s: string): string =>
+  isId
+    ? ({
+        VALID: 'Sah',
+        INVALID: 'Tidak sah',
+        CONTESTED: 'Diperdebatkan',
+        REQUIRES_ADDITIONAL_PREMISE: 'Perlu alasan tambahan',
+        UNDERDETERMINED: 'Belum dapat ditentukan',
+      })[s] ?? s
+    : s.replace(/_/g, ' ');
+
+const typeLabel = (t: string): string =>
+  isId
+    ? ({
+        TEXTUAL: 'Kutipan teks',
+        HISTORICAL: 'Sejarah',
+        EMPIRICAL: 'Fakta',
+        LOGICAL: 'Logika',
+        PHILOSOPHICAL: 'Filsafat',
+        THEOLOGICAL: 'Teologi',
+        INTERPRETIVE: 'Penafsiran',
+        COMPOSITE: 'Gabungan',
+      })[t] ?? t
+    : t;
+
+const domainLabel = (d: string): string =>
+  isId
+    ? d
+        .split(';')
+        .map((x) =>
+          (
+            {
+              'Philosophy': 'Filsafat',
+              'Philosophy of Religion': 'Filsafat Agama',
+              'Christian Theology': 'Teologi Kristen',
+              'Catholic Theology': 'Teologi Katolik',
+              'Biblical Studies': 'Studi Alkitab',
+              'History': 'Sejarah',
+              'Ecclesiology': 'Gereja',
+              'Patristics': 'Bapa Gereja',
+              'Apologetics': 'Apologetika',
+            } as Record<string, string>
+          )[x.trim()] ?? x.trim()
+        )
+        .join('; ')
+    : d;
 ---
 
 <article class="argument-card" id={p.id} aria-labelledby={`${p.id}-title`}>
   <div class="head">
     <span class="id" aria-hidden="true">{p.id} · L{p.layer}</span>
-    <span class={`status ${statusClass}`} title={isId ? 'Status inferensi' : 'Inference status'}>
-      {p.inference_status.replace(/_/g, ' ')}
+    <span class={`status ${statusClass}`} title={isId ? 'Status argumen' : 'Inference status'}>
+      {statusLabel(p.inference_status)}
     </span>
   </div>
   <h3 class="title" id={`${p.id}-title`}>
@@ -45,21 +92,21 @@ const sourcesHref = (id: string) => base + (isId ? `/id/sources/${id}` : `/en/so
     class="meta"
     style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin-bottom: var(--gap-1);"
   >
-    <span>{p.claim_type}</span>
+    <span>{typeLabel(p.claim_type)}</span>
     <span>·</span>
-    <span>{p.domain}</span>
+    <span>{domainLabel(p.domain)}</span>
   </div>
   <p class="claim">"{p.claim}"</p>
 
   <details>
     <summary
-      >{isId ? 'Lihat premis, inferensi, dan keberatan' : 'Show premises, inference, and objections'}</summary
+      >{isId ? 'Lihat alasan, kesimpulan, dan keberatan' : 'Show premises, inference, and objections'}</summary
     >
 
     <h4
       style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
     >
-      {isId ? 'Premis' : 'Premises'}
+      {isId ? 'Alasan' : 'Premises'}
     </h4>
     <ol>
       {p.premises.map((premise) => <li>{premise}</li>)}
@@ -68,7 +115,7 @@ const sourcesHref = (id: string) => base + (isId ? `/id/sources/${id}` : `/en/so
     <h4
       style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
     >
-      {isId ? 'Inferensi' : 'Inference'}
+      {isId ? 'Penarikan kesimpulan' : 'Inference'}
     </h4>
     <p>{p.inference}</p>
 
@@ -83,7 +130,7 @@ const sourcesHref = (id: string) => base + (isId ? `/id/sources/${id}` : `/en/so
       p.hidden_assumptions.length > 0 && (
         <>
           <h4 style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);">
-            {isId ? 'Asumsi tersembunyi' : 'Hidden assumptions'}
+            {isId ? 'Asumsi yang tidak dinyatakan' : 'Hidden assumptions'}
           </h4>
           <ul>
             {p.hidden_assumptions.map((a) => (
@@ -104,7 +151,7 @@ const sourcesHref = (id: string) => base + (isId ? `/id/sources/${id}` : `/en/so
     <h4
       style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
     >
-      {isId ? 'Respons terkuat' : 'Strongest response'}
+      {isId ? 'Jawaban terkuat' : 'Strongest response'}
     </h4>
     <p>{p.strongest_response}</p>
 
@@ -118,14 +165,14 @@ const sourcesHref = (id: string) => base + (isId ? `/id/sources/${id}` : `/en/so
     <h4
       style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
     >
-      {isId ? 'Peringatan' : 'Caveat'}
+      {isId ? 'Catatan' : 'Caveat'}
     </h4>
     <p>{p.caveat}</p>
 
     <h4
       style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
     >
-      {isId ? 'Apa yang TIDAK ditetapkan' : 'What this argument does NOT establish'}
+      {isId ? 'Apa yang TIDAK bisa dibuktikan' : 'What this argument does NOT establish'}
     </h4>
     <ul>
       {p.what_this_argument_does_not_establish.map((x) => <li>{x}</li>)}
@@ -134,14 +181,14 @@ const sourcesHref = (id: string) => base + (isId ? `/id/sources/${id}` : `/en/so
     <h4
       style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
     >
-      {isId ? 'Tantangan evidensial' : 'Evidential challenge'}
+      {isId ? 'Tantangan dari bukti' : 'Evidential challenge'}
     </h4>
     <p>{p.evidential_challenge}</p>
 
     <h4
       style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
     >
-      {isId ? 'Kondisi kekalahan' : 'Defeat condition'}
+      {isId ? 'Bila argumen ini gagal' : 'Defeat condition'}
     </h4>
     <p>{p.defeat_condition}</p>
   </details>

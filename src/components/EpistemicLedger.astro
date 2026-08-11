@@ -12,32 +12,32 @@ const isId = p.lang === 'id';
 
 <aside class="ledger" aria-labelledby="ledger-heading">
   <h2 id="ledger-heading">
-    {isId ? 'Buku besar epistemik' : 'Epistemic ledger'}
+    {isId ? 'Ringkasan bab ini' : 'Epistemic ledger'}
   </h2>
   <p
     style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin: 0 0 var(--gap-2) 0;"
   >
     {
       isId
-        ? 'Klaim yang ditetapkan, yang masih diperdebatkan, dan yang tidak ditetapkan dalam bab ini. Bukan skor. Bukan peringkat. Hanya status.'
+        ? 'Apa yang sudah jelas, apa yang masih diperdebatkan, dan apa yang belum bisa dipastikan dalam bab ini. Bukan nilai. Bukan peringkat. Hanya status.'
         : 'What is established, what is still contested, and what is not established in this chapter. Not a score. Not a ranking. Just status.'
     }
   </p>
   <div class="columns">
     <div class="column established">
-      <div class="label">{isId ? 'Ditetapkan' : 'Established'}</div>
+      <div class="label">{isId ? 'Sudah jelas' : 'Established'}</div>
       <ul>
         {p.established.map((x) => <li>{x}</li>)}
       </ul>
     </div>
     <div class="column contested">
-      <div class="label">{isId ? 'Diperdebatkan' : 'Contested'}</div>
+      <div class="label">{isId ? 'Masih diperdebatkan' : 'Contested'}</div>
       <ul>
         {p.contested.map((x) => <li>{x}</li>)}
       </ul>
     </div>
     <div class="column not-est">
-      <div class="label">{isId ? 'Tidak ditetapkan' : 'Not established'}</div>
+      <div class="label">{isId ? 'Belum bisa dipastikan' : 'Not established'}</div>
       <ul>
         {p.not_established.map((x) => <li>{x}</li>)}
       </ul>

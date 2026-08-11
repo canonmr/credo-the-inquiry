@@ -6,7 +6,7 @@ import SourceDrawer from '../../../components/SourceDrawer.astro';
 import { getCollection } from 'astro:content';
 
 const lang = 'id' as const;
-const slug = 'jika-allah-sudah-tahu-mengapa-tetap-menciptakan';
+const slug = '01-if-god-already-knew-why-create';
 
 const allChapters = await getCollection('chapters', ({ data }) => data.language === 'id');
 const chapter = allChapters.find((c) => c.data.chapter_slug === slug);
@@ -45,7 +45,7 @@ const chapterSources = chapter.data.sources_used
   <p
     style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-soft); margin: 0 0 var(--gap-1) 0;"
   >
-    Bab 1 · prototipe Phase 0
+    Bab 1 · edisi awal
   </p>
   <h1>{chapter.data.title_id || chapter.data.title}</h1>
 

@@ -6,7 +6,7 @@ import SourceDrawer from '../../../components/SourceDrawer.astro';
 import { getCollection } from 'astro:content';
 
 const lang = 'en' as const;
-const slug = 'if-god-already-knew-why-create';
+const slug = '01-if-god-already-knew-why-create';
 
 const allChapters = await getCollection('chapters', ({ data }) => data.language === 'en');
 const chapter = allChapters.find((c) => c.data.chapter_slug === slug);

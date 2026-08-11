@@ -81,25 +81,25 @@ const nodesHref = (id: string) =>
 
 <section class="argument-map" aria-labelledby="map-heading">
   <h3 id="map-heading">
-    {isId ? 'Peta argumen (15 node, 3 lapisan)' : 'Argument map (15 nodes, 3 layers)'}
+    {isId ? 'Peta argumen (15 langkah, 3 lapisan)' : 'Argument map (15 nodes, 3 layers)'}
   </h3>
   <div class="legend" aria-hidden="true">
     <span class="l1"
-      >{isId ? 'Lapisan 1 — disambiguasi konseptual' : 'Layer 1 — conceptual disambiguation'}</span
+      >{isId ? 'Lapisan 1 — pengertian dasar' : 'Layer 1 — conceptual disambiguation'}</span
     >
-    <span class="l2">{isId ? 'Lapisan 2 — masalah dan pembelaan' : 'Layer 2 — problem and defense'}</span>
-    <span class="l3">{isId ? 'Lapisan 3 — sintesis' : 'Layer 3 — synthesis'}</span>
+    <span class="l2">{isId ? 'Lapisan 2 — masalah dan jawaban' : 'Layer 2 — problem and defense'}</span>
+    <span class="l3">{isId ? 'Lapisan 3 — kesimpulan' : 'Layer 3 — synthesis'}</span>
   </div>
   <p
     style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin: 0 0 var(--gap-2) 0;"
   >
     {
       isId
-        ? 'Ketuk sebuah node untuk membuka uraian lengkapnya. Panah menunjukkan dependensi struktural yang dipilih, bukan semua relasi.'
+        ? 'Ketuk sebuah titik untuk membaca uraian lengkapnya. Garis menunjukkan keterkaitan yang dipilih, bukan semua keterkaitan.'
         : 'Tap a node to open its full record. Arrows show selected structural dependencies, not every relation.'
     }
   </p>
-  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={isId ? 'Peta 15 node POE' : 'Map of 15 POE nodes'}>
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={isId ? 'Peta argumen dengan 15 langkah' : 'Map of 15 POE nodes'}>
     {/* Layer bands */}
     <rect x="0" y="20" width={W} height="100" fill="rgba(107, 63, 43, 0.05)"></rect>
     <rect x="0" y="170" width={W} height="100" fill="rgba(47, 93, 80, 0.05)"></rect>

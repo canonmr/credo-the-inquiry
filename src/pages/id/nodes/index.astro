@@ -6,13 +6,54 @@ const lang = 'id' as const;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const all = await getCollection('argument-nodes');
 const sorted = all.sort((a, b) => a.data.id.localeCompare(b.data.id));
+
+const statusLabel = (s: string): string =>
+  ({
+    VALID: 'Sah',
+    INVALID: 'Tidak sah',
+    CONTESTED: 'Diperdebatkan',
+    REQUIRES_ADDITIONAL_PREMISE: 'Perlu alasan tambahan',
+    UNDERDETERMINED: 'Belum dapat ditentukan',
+  })[s] ?? s;
+
+const typeLabel = (t: string): string =>
+  ({
+    TEXTUAL: 'Kutipan teks',
+    HISTORICAL: 'Sejarah',
+    EMPIRICAL: 'Fakta',
+    LOGICAL: 'Logika',
+    PHILOSOPHICAL: 'Filsafat',
+    THEOLOGICAL: 'Teologi',
+    INTERPRETIVE: 'Penafsiran',
+    COMPOSITE: 'Gabungan',
+  })[t] ?? t;
+
+const domainLabel = (d: string): string =>
+  d
+    .split(';')
+    .map((x) =>
+      (
+        {
+          'Philosophy': 'Filsafat',
+          'Philosophy of Religion': 'Filsafat Agama',
+          'Christian Theology': 'Teologi Kristen',
+          'Catholic Theology': 'Teologi Katolik',
+          'Biblical Studies': 'Studi Alkitab',
+          'History': 'Sejarah',
+          'Ecclesiology': 'Gereja',
+          'Patristics': 'Bapa Gereja',
+          'Apologetics': 'Apologetika',
+        } as Record<string, string>
+      )[x.trim()] ?? x.trim()
+    )
+    .join('; ');
 ---
 
-<Layout title="Node argumen" lang={lang} description="Daftar node argumen (POE) untuk CREDO The Inquiry.">
-  <h1>Node argumen</h1>
+<Layout title="Langkah-langkah argumen" lang={lang} description="Daftar langkah argumen (POE) untuk CREDO The Inquiry.">
+  <h1>Langkah-langkah argumen</h1>
   <p>
-    Daftar 15 node argumen untuk prototipe Phase 0. Setiap node membawa klaim, premis, inferensi, kesimpulan,
-    status inferensi, asumsi tersembunyi, keberatan, dan kondisi kekalahannya sendiri.
+    Bab pertama memakai 15 langkah argumen. Setiap langkah memuat pernyataan inti, alasan-alasannya,
+    kesimpulan, keberatan terkuat, dan apa yang tidak dapat dibuktikannya.
   </p>
 
   <ul style="list-style: none; padding-left: 0;">
@@ -25,14 +66,14 @@ const sorted = all.sort((a, b) => a.data.id.localeCompare(b.data.id));
               class={`status ${node.data.inference_status}`}
               style="display: inline-block; font-family: var(--font-sans); font-size: var(--fs-tiny); padding: 1px 6px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.06em; border: 1px solid var(--color-line);"
             >
-              {node.data.inference_status.replace(/_/g, ' ')}
+              {statusLabel(node.data.inference_status)}
             </span>
           </div>
           <h3 style="font-family: var(--font-sans); font-size: var(--fs-h3); margin: 4px 0;">
             <a href={`${base}/id/nodes/${node.data.id}`}>{node.data.title}</a>
           </h3>
           <p style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin: 0;">
-            {node.data.claim_type} · {node.data.domain}
+            {typeLabel(node.data.claim_type)} · {domainLabel(node.data.domain)}
           </p>
         </li>
       ))

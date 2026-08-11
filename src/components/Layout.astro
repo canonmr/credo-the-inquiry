@@ -45,7 +45,7 @@ const switchTitle = isId ? 'Switch to English' : 'Beralih ke Bahasa Indonesia';
       <nav aria-label={isId ? 'Navigasi utama' : 'Primary'}>
         <a href={homeHref}>{isId ? 'Beranda' : 'Home'}</a>
         <a href={chaptersHref}>{isId ? 'Bab' : 'Chapter'}</a>
-        <a href={nodesHref}>{isId ? 'Node Argumen' : 'Argument Nodes'}</a>
+        <a href={nodesHref}>{isId ? 'Argumen' : 'Argument Nodes'}</a>
         <a href={sourcesHref}>{isId ? 'Sumber' : 'Sources'}</a>
         <a href={switchTo} lang={isId ? 'en' : 'id'} title={switchTitle} aria-label={switchTitle}>
           {switchLabel}
@@ -61,7 +61,7 @@ const switchTitle = isId ? 'Switch to English' : 'Beralih ke Bahasa Indonesia';
       <p>
         {
           isId
-            ? 'CREDO The Inquiry — prototipe Phase 0. Konten diawasi oleh knowledge base; kutipan harus diverifikasi ke teks resmi.'
+            ? 'CREDO The Inquiry — edisi awal. Setiap kutipan diperiksa terhadap teks aslinya; tidak ada kutipan atau doktrin yang dikarang.'
             : 'CREDO The Inquiry — Phase 0 prototype. Content is governed by the knowledge base; quotations must be verified against official texts.'
         }
       </p>

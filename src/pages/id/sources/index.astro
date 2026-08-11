@@ -6,14 +6,33 @@ const lang = 'id' as const;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const all = await getCollection('sources');
 const sorted = all.sort((a, b) => a.data.source_id.localeCompare(b.data.source_id));
+
+const verifLabel = (v: string): string =>
+  ({
+    VERIFIED: 'Terverifikasi',
+    'PARTIALLY VERIFIED': 'Sebagian terverifikasi',
+    UNVERIFIED: 'Belum diverifikasi',
+    DISPUTED: 'Diperdebatkan',
+  })[v] ?? v;
+
+const typeLabel = (t: string): string =>
+  ({
+    'primary-philosophical': 'Karya filsafat',
+    'primary-theological': 'Karya teologi',
+    'church-document': 'Dokumen gereja',
+    'biblical-text': 'Teks Alkitab',
+    patristic: 'Bapa Gereja',
+    historical: 'Sejarah',
+    'scholarly-secondary': 'Kajian akademik',
+    reference: 'Rujukan umum',
+  })[t] ?? t;
 ---
 
-<Layout title="Sumber" lang={lang} description="Daftar catatan sumber untuk CREDO The Inquiry.">
+<Layout title="Sumber" lang={lang} description="Daftar sumber untuk CREDO The Inquiry.">
   <h1>Sumber</h1>
   <p>
-    Daftar catatan sumber untuk prototipe Phase 0. Setiap catatan memuat kutipan asli yang telah diverifikasi,
-    terjemahan (jika relevan), parafrase, dan status verifikasi. Tidak ada kutipan, nomor halaman, atau
-    doktrin yang diarang-arang.
+    Semua sumber yang dipakai proyek ini, lengkap dengan kutipan aslinya, terjemahan (bila ada), dan
+    keterangan sudah diperiksa atau belum. Tidak ada kutipan, nomor halaman, atau ajaran yang dikarang-karang.
   </p>
 
   <ul style="list-style: none; padding-left: 0;">
@@ -26,14 +45,14 @@ const sorted = all.sort((a, b) => a.data.source_id.localeCompare(b.data.source_i
               class={`verif ${src.data.verification_status === 'PARTIALLY VERIFIED' ? 'PARTIALLY' : src.data.verification_status}`}
               style="display: inline-block; font-family: var(--font-sans); font-size: var(--fs-tiny); padding: 1px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em; border: 1px solid var(--color-line);"
             >
-              {src.data.verification_status}
+              {verifLabel(src.data.verification_status)}
             </span>
           </div>
           <h3 style="font-family: var(--font-sans); font-size: var(--fs-h3); margin: 4px 0;">
             <a href={`${base}/id/sources/${src.data.source_id}`}>{src.data.title}</a>
           </h3>
           <p style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin: 0;">
-            {src.data.author} · {src.data.date} · {src.data.source_type}
+            {src.data.author} · {src.data.date} · {typeLabel(src.data.source_type)}
           </p>
         </li>
       ))

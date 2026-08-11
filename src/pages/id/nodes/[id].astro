@@ -17,12 +17,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const { Content } = await node.render();
 ---
 
-<Layout title={node.data.title} lang={lang} description={`Node argumen ${node.data.id}: ${node.data.title}`}>
+<Layout title={node.data.title} lang={lang} description={`Langkah argumen ${node.data.id}: ${node.data.title}`}>
   <p
     style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-soft); margin: 0 0 var(--gap-1) 0;"
   >
     <a href={`${base}/id/nodes`} style="color: var(--color-ink-soft); text-decoration: none;"
-      >← Kembali ke daftar node</a
+      >← Kembali ke daftar argumen</a
     >
   </p>
 
