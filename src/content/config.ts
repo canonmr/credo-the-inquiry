@@ -9,6 +9,7 @@ const argumentNodes = defineCollection({
     id: z.string().regex(/^POE-\d{3}$/),
     layer: z.union([z.literal(1), z.literal(2), z.literal(3)]),
     title: z.string(),
+    language: z.enum(['id', 'en']).optional().default('en'),
     speaker: z.string().nullable(),
     claim_type: z.string(),
     domain: z.string(),

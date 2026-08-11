@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 
 const lang = 'id' as const;
 export async function getStaticPaths() {
-  const nodes = await getCollection('argument-nodes');
+  const nodes = await getCollection('argument-nodes', ({ data }) => (data.language ?? 'en') === 'id');
   return nodes.map((node) => ({
     params: { id: node.data.id },
     props: { node },
