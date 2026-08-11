@@ -1,0 +1,77 @@
+---
+import Layout from '../../components/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'en' as const;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const chapters = (await getCollection('chapters', ({ data }) => data.language === 'en')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const nodes = await getCollection('argument-nodes');
+const sources = await getCollection('sources');
+---
+
+<Layout
+  title="Home"
+  lang={lang}
+  description="Interactive Christian Inquiry Project — Phase 0 prototype. Deeper questions, not slogans."
+>
+  <h1>CREDO The Inquiry</h1>
+  <p
+    style="font-family: var(--font-sans); color: var(--color-ink-soft); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 var(--gap-2) 0;"
+  >
+    Phase 0 prototype — mobile-first, source-grounded, logically disciplined
+  </p>
+
+  <p>
+    An interactive knowledge system for tracing a chain of questions: the problem of evil → divine
+    foreknowledge → causation → freedom → permission → suffering → theism → revelation → Jesus → resurrection
+    → apostles → Scripture → Tradition → Church → authority → Catholic claim.
+  </p>
+
+  <p>
+    The project is not merely an apologetics article collection. Its core asset is the structured argument and
+    source graph behind the presentation. Visualizations explain reasoning. Worldviews are not given numerical
+    scores.
+  </p>
+
+  <h2>Start here</h2>
+  <ul>
+    {
+      chapters.map((c) => (
+        <li>
+          <strong>Chapter {c.data.order}:</strong>{' '}
+          <a href={`${base}/en/chapters/${c.data.chapter_slug}`}>{c.data.title}</a>
+          <div style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft);">
+            {c.data.nodes_used.length} argument nodes · {c.data.sources_used.length} sources
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2>Counts</h2>
+  <ul>
+    <li><a href={`${base}/en/nodes`}>{nodes.length} argument nodes</a> (POE-001 through POE-015)</li>
+    <li>
+      <a href={`${base}/en/sources`}>{sources.length} source records</a> (CCC, primary philosophy, patristic, reference)
+    </li>
+  </ul>
+
+  <h2>Non-negotiable rules</h2>
+  <ol>
+    <li>No invented quotations, sources, page numbers, or Catholic doctrine.</li>
+    <li>Textual claims are kept separate from theological claims.</li>
+    <li>Conclusions are bounded by premises.</li>
+    <li>
+      Foreknowledge, causation, permission, intention, possibility, plausibility, defense, and theodicy remain
+      distinct.
+    </li>
+    <li>Plantinga's Free Will Defense is presented as a defense, not as a complete solution.</li>
+    <li>Fallen angels are not invoked to explain particular natural disasters.</li>
+    <li>Not every natural evil is mapped to a particular sin.</li>
+    <li>Catholicism is not declared established before the relevant arguments are developed.</li>
+    <li>No arbitrary numerical scores for worldviews.</li>
+  </ol>
+</Layout>

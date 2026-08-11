@@ -1,0 +1,167 @@
+---
+export interface Props {
+  id: string;
+  title: string;
+  claim: string;
+  inference_status: 'VALID' | 'INVALID' | 'CONTESTED' | 'REQUIRES_ADDITIONAL_PREMISE' | 'UNDERDETERMINED';
+  claim_type: string;
+  domain: string;
+  layer: 1 | 2 | 3;
+  premises: string[];
+  inference: string;
+  conclusion: string;
+  hidden_assumptions: string[];
+  strongest_objection: string;
+  strongest_response: string;
+  counter_response: string;
+  caveat: string;
+  what_this_argument_does_not_establish: string[];
+  evidential_challenge: string;
+  defeat_condition: string;
+  sources: string[];
+  lang: 'id' | 'en';
+}
+
+const p = Astro.props as Props;
+const isId = p.lang === 'id';
+
+const statusClass = p.inference_status; // already a valid CSS class token
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const nodesHref = (id: string) => base + (isId ? `/id/nodes/${id}` : `/en/nodes/${id}`);
+const sourcesHref = (id: string) => base + (isId ? `/id/sources/${id}` : `/en/sources/${id}`);
+---
+
+<article class="argument-card" id={p.id} aria-labelledby={`${p.id}-title`}>
+  <div class="head">
+    <span class="id" aria-hidden="true">{p.id} · L{p.layer}</span>
+    <span class={`status ${statusClass}`} title={isId ? 'Status inferensi' : 'Inference status'}>
+      {p.inference_status.replace(/_/g, ' ')}
+    </span>
+  </div>
+  <h3 class="title" id={`${p.id}-title`}>
+    <a href={nodesHref(p.id)}>{p.title}</a>
+  </h3>
+  <div
+    class="meta"
+    style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin-bottom: var(--gap-1);"
+  >
+    <span>{p.claim_type}</span>
+    <span>·</span>
+    <span>{p.domain}</span>
+  </div>
+  <p class="claim">"{p.claim}"</p>
+
+  <details>
+    <summary
+      >{isId ? 'Lihat premis, inferensi, dan keberatan' : 'Show premises, inference, and objections'}</summary
+    >
+
+    <h4
+      style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
+    >
+      {isId ? 'Premis' : 'Premises'}
+    </h4>
+    <ol>
+      {p.premises.map((premise) => <li>{premise}</li>)}
+    </ol>
+
+    <h4
+      style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
+    >
+      {isId ? 'Inferensi' : 'Inference'}
+    </h4>
+    <p>{p.inference}</p>
+
+    <h4
+      style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
+    >
+      {isId ? 'Kesimpulan' : 'Conclusion'}
+    </h4>
+    <p>{p.conclusion}</p>
+
+    {
+      p.hidden_assumptions.length > 0 && (
+        <>
+          <h4 style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);">
+            {isId ? 'Asumsi tersembunyi' : 'Hidden assumptions'}
+          </h4>
+          <ul>
+            {p.hidden_assumptions.map((a) => (
+              <li>{a}</li>
+            ))}
+          </ul>
+        </>
+      )
+    }
+
+    <h4
+      style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
+    >
+      {isId ? 'Keberatan terkuat' : 'Strongest objection'}
+    </h4>
+    <p>{p.strongest_objection}</p>
+
+    <h4
+      style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
+    >
+      {isId ? 'Respons terkuat' : 'Strongest response'}
+    </h4>
+    <p>{p.strongest_response}</p>
+
+    <h4
+      style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
+    >
+      {isId ? 'Tanggapan balik' : 'Counter-response'}
+    </h4>
+    <p>{p.counter_response}</p>
+
+    <h4
+      style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
+    >
+      {isId ? 'Peringatan' : 'Caveat'}
+    </h4>
+    <p>{p.caveat}</p>
+
+    <h4
+      style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
+    >
+      {isId ? 'Apa yang TIDAK ditetapkan' : 'What this argument does NOT establish'}
+    </h4>
+    <ul>
+      {p.what_this_argument_does_not_establish.map((x) => <li>{x}</li>)}
+    </ul>
+
+    <h4
+      style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
+    >
+      {isId ? 'Tantangan evidensial' : 'Evidential challenge'}
+    </h4>
+    <p>{p.evidential_challenge}</p>
+
+    <h4
+      style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft);"
+    >
+      {isId ? 'Kondisi kekalahan' : 'Defeat condition'}
+    </h4>
+    <p>{p.defeat_condition}</p>
+  </details>
+
+  {
+    p.sources.length > 0 && (
+      <div
+        class="sources"
+        style="margin-top: var(--gap-2); font-family: var(--font-sans); font-size: var(--fs-small);"
+      >
+        <span style="color: var(--color-ink-soft); text-transform: uppercase; letter-spacing: 0.06em; font-size: var(--fs-tiny);">
+          {isId ? 'Sumber:' : 'Sources:'}
+        </span>{' '}
+        {p.sources.map((s, i) => (
+          <span>
+            <a href={sourcesHref(s)}>{s}</a>
+            {i < p.sources.length - 1 ? ', ' : ''}
+          </span>
+        ))}
+      </div>
+    )
+  }
+</article>

@@ -1,0 +1,99 @@
+---
+export interface Props {
+  source_id: string;
+  author: string;
+  title: string;
+  date: string;
+  source_type: string;
+  language: string;
+  edition: string;
+  location: string;
+  original_quote: string;
+  translation?: string;
+  paraphrase?: string;
+  verification_status: 'VERIFIED' | 'PARTIALLY VERIFIED' | 'UNVERIFIED' | 'DISPUTED';
+  notes?: string;
+  lang: 'id' | 'en';
+}
+
+const p = Astro.props as Props;
+const isId = p.lang === 'id';
+const verifClass = p.verification_status === 'PARTIALLY VERIFIED' ? 'PARTIALLY' : p.verification_status;
+---
+
+<article class="source-card" id={p.source_id} aria-labelledby={`${p.source_id}-title`}>
+  <div class="meta">
+    <span class="id">{p.source_id}</span>
+    <span class:list={['verif', verifClass]}>{p.verification_status}</span>
+  </div>
+  <h3
+    class="title"
+    id={`${p.source_id}-title`}
+    style="font-family: var(--font-sans); font-size: var(--fs-h3); margin: 0 0 4px 0;"
+  >
+    {p.title}
+  </h3>
+  <div class="meta" style="margin-bottom: var(--gap-1);">
+    <span>{p.author}</span>
+    <span>·</span>
+    <span>{p.date}</span>
+    <span>·</span>
+    <span>{p.source_type}</span>
+    <span>·</span>
+    <span>{p.language}</span>
+  </div>
+  <div
+    class="meta"
+    style="margin-bottom: var(--gap-2); color: var(--color-ink-soft); font-size: var(--fs-small);"
+  >
+    <span>{p.edition}</span>
+    <span>·</span>
+    <span>{p.location}</span>
+  </div>
+
+  <h4
+    style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft); margin-bottom: 4px;"
+  >
+    {isId ? 'Kutipan asli' : 'Original quote'}
+  </h4>
+  <blockquote class="quote">{p.original_quote}</blockquote>
+
+  {
+    p.translation && (
+      <>
+        <h4 style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft); margin-bottom: 4px;">
+          {isId ? 'Terjemahan' : 'Translation'}
+        </h4>
+        <blockquote class="quote" style="border-left-color: var(--color-accent-2);">
+          {p.translation}
+        </blockquote>
+      </>
+    )
+  }
+
+  {
+    p.paraphrase && (
+      <>
+        <h4 style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft); margin-bottom: 4px;">
+          {isId ? 'Parafrase' : 'Paraphrase'}
+        </h4>
+        <p style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin: 0;">
+          {p.paraphrase}
+        </p>
+      </>
+    )
+  }
+
+  {
+    p.notes && (
+      <details style="margin-top: var(--gap-1);">
+        <summary style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); cursor: pointer;">
+          {isId ? 'Catatan reviewer' : 'Reviewer notes'}
+        </summary>
+        <p style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin-top: var(--gap-1);">
+          {p.notes}
+        </p>
+      </details>
+    )
+  }
+</article>

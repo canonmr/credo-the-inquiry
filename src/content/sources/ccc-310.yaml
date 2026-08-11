@@ -1,0 +1,21 @@
+---
+source_id: ccc-310
+author: Catholic Church (Catechism of the Catholic Church, 2nd ed.)
+title: "Catechism §310 — \"In a state of journeying\""
+date: "1997"
+source_type: church-document
+language: en
+edition: English translation for the United States, 1994 (2nd ed. 1997)
+location: Part One, Section Two, Chapter One, Article 1, Paragraph 4, §310
+original_quote: "But why did God not create a world so perfect that no evil could exist in it? With infinite power God could always create something better. But with infinite wisdom and goodness God freely willed to create a world 'in a state of journeying' towards its ultimate perfection. In God's plan this process of becoming involves the appearance of certain beings and the disappearance of others, the existence of the more perfect alongside the less perfect, both constructive and destructive forces of nature. With physical good there exists also physical evil as long as creation has not reached perfection."
+translation: "(official USCCB English translation; reproduced verbatim)"
+paraphrase: "The Catechism explicitly opens the possibility that God could have created a better world (\"With infinite power God could always create something better\"). It then states that God freely willed to create a world \"in a state of journeying\" toward its ultimate perfection, and that this process of becoming involves both constructive and destructive forces, so that physical evil exists alongside physical good while creation is unfinished."
+verification_status: VERIFIED
+notes: "Critical: the textual claim is that creation is \"in a state of journeying\" toward ultimate perfection, and that physical evil exists alongside physical good while creation has not reached perfection. The text does NOT claim that God could not have created a better world. It does NOT identify the cause of every particular natural evil. It does NOT preclude the possibility of an even better world. Notes 174 and 175 in the CCC cross-reference Aquinas, STh I, 25, 6 and SCG III, 71."
+supports_nodes:
+  - POE-006
+  - POE-010
+  - POE-011
+  - POE-014
+  - POE-015
+changes: []

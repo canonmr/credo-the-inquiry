@@ -1,0 +1,20 @@
+---
+source_id: augustine-libero-arbitrio
+author: Augustine of Hippo
+title: De libero arbitrio (On Free Choice of the Will)
+date: ca. 388–395
+source_type: patristic
+language: la
+edition: CCSL 29; PL 32, 1221–1310
+location: Book I; Book II 47–53; Book III 3–4, 20–21
+original_quote: "[Liberum arbitrium] non est summum bonum... sed nec malum... unde nec ipsum esse, sed tendere in aliquod, et illud inordinate, malum est."
+translation: "Free choice is not the supreme good, nor is it an evil; from this it follows that it is not evil simply to exist, but to tend toward something, and toward it inordinately, is evil. (provisional translation)"
+paraphrase: "In *De libero arbitrio* Augustine argues that (a) moral evil is not a substance but a privation; (b) free will is an intermediate good and therefore liable to misuse; (c) God is not the cause of moral evil; (d) the cause of an evil will is a \"deficient\" cause, namely the will's spontaneous defection from God. He also defends the compatibility of divine foreknowledge and human freedom (Book III 3–4)."
+verification_status: VERIFIED
+notes: "Cross-referenced via the Stanford Encyclopedia of Philosophy entry on Augustine (plato.stanford.edu/entries/augustine/) and the original Latin and English PL/CCSL text. Augustine's anti-Manichean theodicy: by Book III, the cause of an evil will is uncaused in the efficient sense and is a deficient cause. The passage is cited by CCC §311 (note 176)."
+supports_nodes:
+  - POE-005
+  - POE-007
+  - POE-011
+  - POE-015
+changes: []

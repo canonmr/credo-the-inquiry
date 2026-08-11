@@ -1,0 +1,48 @@
+---
+import Layout from '../../../components/Layout.astro';
+import SourceCard from '../../../components/SourceCard.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'id' as const;
+export async function getStaticPaths() {
+  const sources = await getCollection('sources');
+  return sources.map((source) => ({
+    params: { id: source.data.source_id },
+    props: { source },
+  }));
+}
+
+const { source } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout
+  title={source.data.title}
+  lang={lang}
+  description={`Sumber ${source.data.source_id}: ${source.data.title}`}
+>
+  <p
+    style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-soft); margin: 0 0 var(--gap-1) 0;"
+  >
+    <a href={`${base}/id/sources`} style="color: var(--color-ink-soft); text-decoration: none;"
+      >← Kembali ke daftar sumber</a
+    >
+  </p>
+
+  <SourceCard
+    source_id={source.data.source_id}
+    author={source.data.author}
+    title={source.data.title}
+    date={source.data.date}
+    source_type={source.data.source_type}
+    language={source.data.language}
+    edition={source.data.edition}
+    location={source.data.location}
+    original_quote={source.data.original_quote}
+    translation={source.data.translation}
+    paraphrase={source.data.paraphrase}
+    verification_status={source.data.verification_status}
+    notes={source.data.notes}
+    lang={lang}
+  />
+</Layout>

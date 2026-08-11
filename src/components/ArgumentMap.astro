@@ -1,0 +1,152 @@
+---
+/*
+  ArgumentMap.astro
+  Inline-SVG visualization of the 15 Phase-0 POE nodes, grouped by layer.
+  No D3. No animation. Honors prefers-reduced-motion via global CSS.
+  Mobile: shows nodes, layer bands, and the dominant inter-layer edges.
+  Desktop: same, scaled up; legend visible.
+*/
+export interface Props {
+  lang: 'id' | 'en';
+}
+
+const p = Astro.props as Props;
+const isId = p.lang === 'id';
+
+// Node positions (manually laid out for the 15 Phase-0 nodes).
+// Format: id -> [x, y, layer]
+const W = 720;
+const H = 440;
+const nodes: Record<string, [number, number, 1 | 2 | 3]> = {
+  'POE-001': [70, 70, 1],
+  'POE-002': [190, 70, 1],
+  'POE-003': [310, 70, 1],
+  'POE-004': [430, 70, 1],
+  'POE-005': [550, 70, 1],
+  'POE-006': [670, 70, 1],
+  'POE-007': [70, 220, 2],
+  'POE-008': [190, 220, 2],
+  'POE-009': [310, 220, 2],
+  'POE-010': [430, 220, 2],
+  'POE-011': [550, 220, 2],
+  'POE-012': [670, 220, 2],
+  'POE-013': [240, 370, 3],
+  'POE-014': [420, 370, 3],
+  'POE-015': [600, 370, 3],
+};
+
+// Selected edges. Showing all related_nodes would clutter the mobile view.
+// We draw the strongest structural edges: inter-layer dependencies + the
+// central "logical problem / defense" pair.
+const edges: Array<[string, string, string]> = [
+  // Layer 1 -> Layer 2 (foundations feed the problems)
+  ['POE-001', 'POE-007', 'feeds'],
+  ['POE-005', 'POE-007', 'feeds'],
+  ['POE-006', 'POE-007', 'feeds'],
+  ['POE-006', 'POE-008', 'modally'],
+  ['POE-005', 'POE-008', 'feeds'],
+  ['POE-007', 'POE-008', 'responds to'],
+  ['POE-007', 'POE-009', 'extends'],
+  // Layer 2 -> Layer 2 (internal)
+  ['POE-009', 'POE-010', 'specifies'],
+  ['POE-008', 'POE-011', 'extends'],
+  ['POE-011', 'POE-012', 'is targeted by'],
+  // Layer 2/3 -> Layer 3 (synthesis)
+  ['POE-009', 'POE-013', 'is met by'],
+  ['POE-010', 'POE-013', 'is met by'],
+  ['POE-014', 'POE-015', 'is held by'],
+  ['POE-008', 'POE-014', 'feeds'],
+  ['POE-011', 'POE-014', 'feeds'],
+  ['POE-013', 'POE-015', 'frames'],
+  ['POE-005', 'POE-015', 'is held by'],
+  ['POE-010', 'POE-015', 'is held by'],
+  ['POE-011', 'POE-015', 'is held by'],
+];
+
+const layerColor: Record<1 | 2 | 3, string> = {
+  1: '#6b3f2b',
+  2: '#2f5d50',
+  3: '#8a5a00',
+};
+
+function findNodeXY(id: string): [number, number] {
+  const n = nodes[id];
+  if (!n) return [0, 0];
+  return [n[0], n[1]];
+}
+
+const nodesHref = (id: string) =>
+  import.meta.env.BASE_URL.replace(/\/$/, '') + (isId ? `/id/nodes/${id}` : `/en/nodes/${id}`);
+---
+
+<section class="argument-map" aria-labelledby="map-heading">
+  <h3 id="map-heading">
+    {isId ? 'Peta argumen (15 node, 3 lapisan)' : 'Argument map (15 nodes, 3 layers)'}
+  </h3>
+  <div class="legend" aria-hidden="true">
+    <span class="l1"
+      >{isId ? 'Lapisan 1 — disambiguasi konseptual' : 'Layer 1 — conceptual disambiguation'}</span
+    >
+    <span class="l2">{isId ? 'Lapisan 2 — masalah dan pembelaan' : 'Layer 2 — problem and defense'}</span>
+    <span class="l3">{isId ? 'Lapisan 3 — sintesis' : 'Layer 3 — synthesis'}</span>
+  </div>
+  <p
+    style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin: 0 0 var(--gap-2) 0;"
+  >
+    {
+      isId
+        ? 'Ketuk sebuah node untuk membuka uraian lengkapnya. Panah menunjukkan dependensi struktural yang dipilih, bukan semua relasi.'
+        : 'Tap a node to open its full record. Arrows show selected structural dependencies, not every relation.'
+    }
+  </p>
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={isId ? 'Peta 15 node POE' : 'Map of 15 POE nodes'}>
+    {/* Layer bands */}
+    <rect x="0" y="20" width={W} height="100" fill="rgba(107, 63, 43, 0.05)"></rect>
+    <rect x="0" y="170" width={W} height="100" fill="rgba(47, 93, 80, 0.05)"></rect>
+    <rect x="0" y="320" width={W} height="100" fill="rgba(138, 90, 0, 0.05)"></rect>
+
+    {/* Layer labels */}
+    <text x="10" y="35" font-family="var(--font-sans)" font-size="11" fill="var(--color-ink-soft)">L1</text>
+    <text x="10" y="185" font-family="var(--font-sans)" font-size="11" fill="var(--color-ink-soft)">L2</text>
+    <text x="10" y="335" font-family="var(--font-sans)" font-size="11" fill="var(--color-ink-soft)">L3</text>
+
+    {/* Edges */}
+    {
+      edges.map(([from, to, label]) => {
+        const [x1, y1] = findNodeXY(from);
+        const [x2, y2] = findNodeXY(to);
+        const midX = (x1 + x2) / 2;
+        const midY = (y1 + y2) / 2;
+        return (
+          <g>
+            <path class="edge" d={`M ${x1} ${y1} Q ${midX} ${midY} ${x2} ${y2}`} />
+            <text class="edge-label" x={midX + 4} y={midY - 2}>
+              {label}
+            </text>
+          </g>
+        );
+      })
+    }
+
+    {/* Nodes */}
+    {
+      Object.entries(nodes).map(([id, [x, y, layer]]) => (
+        <a href={nodesHref(id)}>
+          <g class={`node l${layer}`}>
+            <circle cx={x} cy={y} r="22" fill={layerColor[layer]} />
+            <text
+              x={x}
+              y={y + 4}
+              text-anchor="middle"
+              fill="white"
+              font-family="var(--font-sans)"
+              font-size="9"
+            >
+              {id.replace('POE-', '')}
+            </text>
+          </g>
+        </a>
+      ))
+    }
+  </svg>
+</section>

@@ -1,0 +1,67 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  lang: 'id' | 'en';
+  description?: string;
+}
+
+const { title, lang, description } = Astro.props as Props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const isId = lang === 'id';
+const homeHref = base + (isId ? '/id/' : '/en/');
+const chaptersHref =
+  base + (isId ? '/id/chapters/01-if-god-already-knew-why-create' : '/en/chapters/01-if-god-already-knew-why-create');
+const nodesHref = base + (isId ? '/id/nodes' : '/en/nodes');
+const sourcesHref = base + (isId ? '/id/sources' : '/en/sources');
+
+const currentPath = Astro.url.pathname.startsWith(base + '/')
+  ? Astro.url.pathname.slice(base.length)
+  : Astro.url.pathname;
+const switchTo = base + currentPath.replace(/^\/(id|en)(?=\/|$)/, isId ? '/en' : '/id');
+const switchLabel = isId ? 'EN' : 'ID';
+const switchTitle = isId ? 'Switch to English' : 'Beralih ke Bahasa Indonesia';
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    {description && <meta name="description" content={description} />}
+    <title>{title} — CREDO The Inquiry</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{isId ? 'Lewati ke konten utama' : 'Skip to main content'}</a>
+
+    <header class="site-header" role="banner">
+      <a class="brand" href={homeHref}>CREDO The Inquiry</a>
+      <nav aria-label={isId ? 'Navigasi utama' : 'Primary'}>
+        <a href={homeHref}>{isId ? 'Beranda' : 'Home'}</a>
+        <a href={chaptersHref}>{isId ? 'Bab' : 'Chapter'}</a>
+        <a href={nodesHref}>{isId ? 'Node Argumen' : 'Argument Nodes'}</a>
+        <a href={sourcesHref}>{isId ? 'Sumber' : 'Sources'}</a>
+        <a href={switchTo} lang={isId ? 'en' : 'id'} title={switchTitle} aria-label={switchTitle}>
+          {switchLabel}
+        </a>
+      </nav>
+    </header>
+
+    <main id="main" class="page" role="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <p>
+        {
+          isId
+            ? 'CREDO The Inquiry — prototipe Phase 0. Konten diawasi oleh knowledge base; kutipan harus diverifikasi ke teks resmi.'
+            : 'CREDO The Inquiry — Phase 0 prototype. Content is governed by the knowledge base; quotations must be verified against official texts.'
+        }
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+dist
+node_modules
+.astro
+.prettierignore
+package-lock.json
+docs
+src/content
+public

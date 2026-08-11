@@ -1,0 +1,19 @@
+---
+source_id: rowe-1979
+author: William L. Rowe
+title: "The Problem of Evil and Some Varieties of Atheism"
+date: "1979"
+source_type: primary-philosophical
+language: en
+edition: American Philosophical Quarterly, Vol. 16, No. 4 (Oct., 1979), pp. 335–341
+location: pp. 335–341
+original_quote: "(1) There exist instances of intense suffering which an omnipotent, omniscient being could have prevented without thereby losing some greater good or permitting some evil equally bad or worse. (2) An omniscient, wholly good being would prevent the occurrence of any intense suffering it could, unless it could not do so without thereby losing some greater good or permitting some evil equally bad or worse. (3) (Therefore) There does not exist an omnipotent, omniscient, wholly good being."
+translation: "(English original)"
+paraphrase: Rowe presents a deductively valid argument for atheism from apparently gratuitous suffering. Premise 1 is supported by the example of a fawn trapped in a forest fire and suffering for several days. Premise 2 is widely accepted by both theists and atheists. The conclusion is atheism. Rowe concedes that the argument does not prove premise 1; it is supported by induction from particular cases.
+verification_status: VERIFIED
+notes: "Primary text cited via IEP \"Evidential Problem of Evil\" entry; secondary reproductions in the Glasgow University PDF and the Asbury Place \"Faith and Philosophy\" PDF. The fawn example is at p. 337: \"In some distant forest lightning strikes a dead tree, resulting in a forest fire. In the fire a fawn is trapped, horribly burned, and lies in terrible agony for several days before death relieves its suffering.\" The inferential move from \"we cannot see a reason\" to \"there is no reason\" is dubbed the \"noseeum inference\" by later commentators (Wykstra; Draper)."
+supports_nodes:
+  - POE-009
+  - POE-010
+  - POE-013
+changes: []

@@ -1,0 +1,60 @@
+---
+import Layout from '../../../components/Layout.astro';
+import EpistemicLedger from '../../../components/EpistemicLedger.astro';
+import ArgumentMap from '../../../components/ArgumentMap.astro';
+import SourceDrawer from '../../../components/SourceDrawer.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'en' as const;
+const slug = 'if-god-already-knew-why-create';
+
+const allChapters = await getCollection('chapters', ({ data }) => data.language === 'en');
+const chapter = allChapters.find((c) => c.data.chapter_slug === slug);
+if (!chapter) throw new Error(`Chapter not found: ${slug}`);
+
+const { Content } = await chapter.render();
+
+const allSources = await getCollection('sources');
+const sourcesByID = new Map(allSources.map((s) => [s.data.source_id, s]));
+
+const chapterSources = chapter.data.sources_used
+  .map((id) => sourcesByID.get(id))
+  .filter((s): s is NonNullable<typeof s> => Boolean(s))
+  .map((s) => ({
+    source_id: s.data.source_id,
+    title: s.data.title,
+    author: s.data.author,
+    date: s.data.date,
+    source_type: s.data.source_type,
+    language: s.data.language,
+    edition: s.data.edition,
+    location: s.data.location,
+    original_quote: s.data.original_quote,
+    translation: s.data.translation,
+    paraphrase: s.data.paraphrase,
+    verification_status: s.data.verification_status,
+    notes: s.data.notes,
+  }));
+---
+
+<Layout title={chapter.data.title} lang={lang} description="Chapter 1 — If God Already Knew, Why Create?">
+  <p
+    style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-soft); margin: 0 0 var(--gap-1) 0;"
+  >
+    Chapter 1 · Phase 0 prototype
+  </p>
+  <h1>{chapter.data.title}</h1>
+
+  <Content />
+
+  <ArgumentMap lang={lang} />
+
+  <EpistemicLedger
+    established={chapter.data.epistemic_ledger.established}
+    contested={chapter.data.epistemic_ledger.contested}
+    not_established={chapter.data.epistemic_ledger.not_established}
+    lang={lang}
+  />
+
+  <SourceDrawer sources={chapterSources} lang={lang} />
+</Layout>

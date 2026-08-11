@@ -1,0 +1,77 @@
+---
+import Layout from '../../components/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'id' as const;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const chapters = (await getCollection('chapters', ({ data }) => data.language === 'id')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const nodes = await getCollection('argument-nodes');
+const sources = await getCollection('sources');
+---
+
+<Layout
+  title="Beranda"
+  lang={lang}
+  description="Proyek Inkuiri Kristen Interaktif — prototipe Phase 0. Pertanyaan yang lebih dalam, bukan slogan."
+>
+  <h1>CREDO The Inquiry</h1>
+  <p
+    style="font-family: var(--font-sans); color: var(--color-ink-soft); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 var(--gap-2) 0;"
+  >
+    Prototipe Phase 0 — seluler-pertama, bersumber, disiplin logis
+  </p>
+
+  <p>
+    Sebuah sistem pengetahuan interaktif untuk menelusuri rantai pertanyaan: masalah kejahatan → pengetahuan
+    akan masa depan → kausalitas → kebebasan → izin → penderitaan → teisme → wahyu → Yesus → kebangkitan →
+    rasul → Kitab Suci → Tradisi → Gereja → otoritas → klaim Katolik.
+  </p>
+
+  <p>
+    Proyek ini bukan sekadar kumpulan artikel apologetik. Aset intinya adalah graf argumen dan sumber
+    terstruktur di balik presentasi. Visualisasi harus menjelaskan penalaran. Skor numerik untuk worldview
+    tidak digunakan.
+  </p>
+
+  <h2>Dimulai</h2>
+  <ul>
+    {
+      chapters.map((c) => (
+        <li>
+          <strong>Bab {c.data.order}:</strong>{' '}
+          <a href={`${base}/id/chapters/${c.data.chapter_slug}`}>{c.data.title_id || c.data.title}</a>
+          <div style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft);">
+            {c.data.nodes_used.length} node argumen · {c.data.sources_used.length} sumber
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2>Jumlah node dan sumber</h2>
+  <ul>
+    <li><a href={`${base}/id/nodes`}>{nodes.length} node argumen</a> (POE-001 sampai POE-015)</li>
+    <li>
+      <a href={`${base}/id/sources`}>{sources.length} catatan sumber</a> (CCC, primer filosofis, patristik, referensi)
+    </li>
+  </ul>
+
+  <h2>Aturan non-negosiasi</h2>
+  <ol>
+    <li>Tidak ada kutipan, sumber, nomor halaman, atau doktrin Katolik yang diarang-arang.</li>
+    <li>Klaim tekstual dipisahkan dari klaim teologis.</li>
+    <li>Kesimpulan tidak melampaui premis-premisnya.</li>
+    <li>
+      Foreknowledge, kausalitas, izin, niat, kemungkinan, plausibilitas, pembelaan, dan teodisi tetap
+      dibedakan.
+    </li>
+    <li>Pembelaan Kehendak Bebas Plantinga disajikan sebagai pembelaan, bukan sebagai solusi lengkap.</li>
+    <li>Malaikat yang jatuh tidak digunakan untuk menjelaskan bencana alam tertentu.</li>
+    <li>Tidak setiap kejahatan alamiah dipetakan ke dosa tertentu.</li>
+    <li>Katolisisme tidak dinyatakan terbukti sebelum argumen yang relevan dikembangkan.</li>
+    <li>Tidak ada skor numerik arbitrer untuk worldview.</li>
+  </ol>
+</Layout>

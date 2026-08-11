@@ -1,0 +1,32 @@
+{
+  "name": "credo-the-inquiry",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Interactive Christian Inquiry Project — Phase 0 prototype. Mobile-first, source-grounded, logically disciplined.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^3.1.0",
+    "astro": "^4.16.0",
+    "yaml": "^2.5.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.8.1",
+    "eslint-plugin-astro": "^1.7.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.66.0"
+  }
+}

@@ -1,0 +1,19 @@
+---
+source_id: ccc-312
+author: Catholic Church (Catechism of the Catholic Church, 2nd ed.)
+title: "Catechism §312 — \"God brings good from the consequences of evil\""
+date: "1997"
+source_type: church-document
+language: en
+edition: English translation for the United States, 1994 (2nd ed. 1997)
+location: Part One, Section Two, Chapter One, Article 1, Paragraph 4, §312
+original_quote: "In time we can discover that God in his almighty providence can bring a good from the consequences of an evil, even a moral evil, caused by his creatures: 'It was not you', said Joseph to his brothers, 'who sent me here, but God. You meant evil against me; but God meant it for good, to bring it about that many people should be kept alive.' From the greatest moral evil ever committed — the rejection and murder of God's only Son, caused by the sins of all men — God, by his grace that 'abounded all the more', brought the greatest of goods: the glorification of Christ and our redemption. But for all that, evil never becomes a good."
+translation: "(official USCCB English translation; reproduced verbatim)"
+paraphrase: "The Catechism teaches that God, in his providence, is able to bring a greater good out of the consequences of evil, even moral evil. The text gives the Genesis 50:20 narrative (Joseph and his brothers) and the cross / resurrection as the central example: the greatest moral evil (the rejection and murder of the Son) is the occasion for the greatest good (the glorification of Christ and redemption). The Catechism explicitly adds the limiting clause: \"But for all that, evil never becomes a good.\""
+verification_status: VERIFIED
+notes: "Note 178 cites Gen 45:8 and 50:20, with Tob 2:12 (Vulgate) in parallel. Note 179 cites Rom 5:20. The final sentence is doctrinally important: it blocks the inference \"therefore evil is good\". The Catechism distinguishes \"God brings good from the consequences of evil\" from \"evil is good\"."
+supports_nodes:
+  - POE-012
+  - POE-014
+  - POE-015
+changes: []

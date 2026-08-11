@@ -1,0 +1,20 @@
+---
+source_id: stanford-poe-2024
+author: Edward N. Zalta & Uri Nodelman (eds.), Michael Tooley et al. (entries)
+title: "The Problem of Evil (Stanford Encyclopedia of Philosophy)"
+date: "2024"
+source_type: reference
+language: en
+edition: plato.stanford.edu/entries/evil/
+location: §§1–8 (preliminaries, deductive vs evidential, defenses, theodicies)
+original_quote: "Mackie's essay 'Evil and Omnipotence' (1955), in which Mackie had defended an incompatibility version of the argument from evil, focuses mainly on the question of whether the existence of God is compatible with the existence of evil, although there are also short discussions of whether the existence of God is compatible with the existence of a given quantity of evil, and of whether the existence of a certain amount of evil renders the existence of God unlikely."
+translation: "(English)"
+paraphrase: "Authoritative reference. Maps the contemporary literature: logical vs. evidential problem, defenses vs. theodicies, the major figures, and the main lines of response."
+verification_status: VERIFIED
+notes: The SEP entry is the standard reference. Cited in the bibliography sections of the IEP entries and in most contemporary literature.
+supports_nodes:
+  - POE-007
+  - POE-008
+  - POE-009
+  - POE-013
+changes: []

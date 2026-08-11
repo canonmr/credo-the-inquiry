@@ -1,0 +1,19 @@
+---
+source_id: ccc-309
+author: Catholic Church (Catechism of the Catholic Church, 2nd ed.)
+title: "Catechism §309 — \"Providence and the scandal of evil\""
+date: "1997"
+source_type: church-document
+language: en
+edition: English translation for the United States, 1994 (2nd ed. 1997)
+location: "Part One, Section Two, Chapter One, Article 1, Paragraph 4 (\"The Creator\"), §309"
+original_quote: "If God the Father almighty, the Creator of the ordered and good world, cares for all his creatures, why does evil exist? To this question, as pressing as it is unavoidable and as painful as it is mysterious, no quick answer will suffice. Only Christian faith as a whole constitutes the answer to this question: the goodness of creation, the drama of sin and the patient love of God who comes to meet man by his covenants, the redemptive Incarnation of his Son, his gift of the Spirit, his gathering of the Church, the power of the sacraments and his call to a blessed life to which free creatures are invited to consent in advance, but from which, by a terrible mystery, they can also turn away in advance. There is not a single aspect of the Christian message that is not in part an answer to the question of evil."
+translation: "(official USCCB English translation; reproduced verbatim)"
+paraphrase: "The Catechism states that the problem of evil is unavoidable and that no quick answer will suffice. It says that Christian faith as a whole — the goodness of creation, the drama of sin, the covenants, the Incarnation, the Spirit, the Church, the sacraments, and the call to a blessed life — constitutes the response. The Catechism also says that \"there is not a single aspect of the Christian message that is not in part an answer to the question of evil.\""
+verification_status: VERIFIED
+notes: Verified against the Catholic Culture reproduction of the USCCB 1994/1997 English translation. Cross-checked against archive.org USCCB text. The Latin original (editio typica) was not retrieved in this round; the official *editio typica* of the 2nd edition was published in 1997. Notes in CCC attribute earlier cross-references to Vatican I, Dei Filius.
+supports_nodes:
+  - POE-007
+  - POE-008
+  - POE-015
+changes: []

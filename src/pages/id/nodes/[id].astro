@@ -1,0 +1,55 @@
+---
+import Layout from '../../../components/Layout.astro';
+import ArgumentCard from '../../../components/ArgumentCard.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'id' as const;
+export async function getStaticPaths() {
+  const nodes = await getCollection('argument-nodes');
+  return nodes.map((node) => ({
+    params: { id: node.data.id },
+    props: { node },
+  }));
+}
+
+const { node } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const { Content } = await node.render();
+---
+
+<Layout title={node.data.title} lang={lang} description={`Node argumen ${node.data.id}: ${node.data.title}`}>
+  <p
+    style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-soft); margin: 0 0 var(--gap-1) 0;"
+  >
+    <a href={`${base}/id/nodes`} style="color: var(--color-ink-soft); text-decoration: none;"
+      >← Kembali ke daftar node</a
+    >
+  </p>
+
+  <ArgumentCard
+    id={node.data.id}
+    title={node.data.title}
+    claim={node.data.claim}
+    inference_status={node.data.inference_status}
+    claim_type={node.data.claim_type}
+    domain={node.data.domain}
+    layer={node.data.layer}
+    premises={node.data.premises}
+    inference={node.data.inference}
+    conclusion={node.data.conclusion}
+    hidden_assumptions={node.data.hidden_assumptions}
+    strongest_objection={node.data.strongest_objection}
+    strongest_response={node.data.strongest_response}
+    counter_response={node.data.counter_response}
+    caveat={node.data.caveat}
+    what_this_argument_does_not_establish={node.data.what_this_argument_does_not_establish}
+    evidential_challenge={node.data.evidential_challenge}
+    defeat_condition={node.data.defeat_condition}
+    sources={node.data.sources}
+    lang={lang}
+  />
+
+  <article class="page" style="padding-left: 0; padding-right: 0; max-width: var(--max-content);">
+    <Content />
+  </article>
+</Layout>

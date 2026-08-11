@@ -1,0 +1,42 @@
+---
+import Layout from '../../../components/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'id' as const;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const all = await getCollection('sources');
+const sorted = all.sort((a, b) => a.data.source_id.localeCompare(b.data.source_id));
+---
+
+<Layout title="Sumber" lang={lang} description="Daftar catatan sumber untuk CREDO The Inquiry.">
+  <h1>Sumber</h1>
+  <p>
+    Daftar catatan sumber untuk prototipe Phase 0. Setiap catatan memuat kutipan asli yang telah diverifikasi,
+    terjemahan (jika relevan), parafrase, dan status verifikasi. Tidak ada kutipan, nomor halaman, atau
+    doktrin yang diarang-arang.
+  </p>
+
+  <ul style="list-style: none; padding-left: 0;">
+    {
+      sorted.map((src) => (
+        <li style="border: var(--border); border-radius: var(--radius); padding: var(--gap-2); margin-bottom: var(--gap-2); background: var(--color-paper-2);">
+          <div style="font-family: var(--font-mono); font-size: var(--fs-tiny); color: var(--color-ink-soft);">
+            {src.data.source_id} ·{' '}
+            <span
+              class={`verif ${src.data.verification_status === 'PARTIALLY VERIFIED' ? 'PARTIALLY' : src.data.verification_status}`}
+              style="display: inline-block; font-family: var(--font-sans); font-size: var(--fs-tiny); padding: 1px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em; border: 1px solid var(--color-line);"
+            >
+              {src.data.verification_status}
+            </span>
+          </div>
+          <h3 style="font-family: var(--font-sans); font-size: var(--fs-h3); margin: 4px 0;">
+            <a href={`${base}/id/sources/${src.data.source_id}`}>{src.data.title}</a>
+          </h3>
+          <p style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin: 0;">
+            {src.data.author} · {src.data.date} · {src.data.source_type}
+          </p>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

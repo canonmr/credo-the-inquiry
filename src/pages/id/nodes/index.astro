@@ -1,0 +1,41 @@
+---
+import Layout from '../../../components/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'id' as const;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const all = await getCollection('argument-nodes');
+const sorted = all.sort((a, b) => a.data.id.localeCompare(b.data.id));
+---
+
+<Layout title="Node argumen" lang={lang} description="Daftar node argumen (POE) untuk CREDO The Inquiry.">
+  <h1>Node argumen</h1>
+  <p>
+    Daftar 15 node argumen untuk prototipe Phase 0. Setiap node membawa klaim, premis, inferensi, kesimpulan,
+    status inferensi, asumsi tersembunyi, keberatan, dan kondisi kekalahannya sendiri.
+  </p>
+
+  <ul style="list-style: none; padding-left: 0;">
+    {
+      sorted.map((node) => (
+        <li style="border: var(--border); border-radius: var(--radius); padding: var(--gap-2); margin-bottom: var(--gap-2); background: var(--color-paper-2);">
+          <div style="font-family: var(--font-mono); font-size: var(--fs-tiny); color: var(--color-ink-soft);">
+            {node.data.id} · L{node.data.layer} ·{' '}
+            <span
+              class={`status ${node.data.inference_status}`}
+              style="display: inline-block; font-family: var(--font-sans); font-size: var(--fs-tiny); padding: 1px 6px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.06em; border: 1px solid var(--color-line);"
+            >
+              {node.data.inference_status.replace(/_/g, ' ')}
+            </span>
+          </div>
+          <h3 style="font-family: var(--font-sans); font-size: var(--fs-h3); margin: 4px 0;">
+            <a href={`${base}/id/nodes/${node.data.id}`}>{node.data.title}</a>
+          </h3>
+          <p style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft); margin: 0;">
+            {node.data.claim_type} · {node.data.domain}
+          </p>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

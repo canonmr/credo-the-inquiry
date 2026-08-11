@@ -1,0 +1,18 @@
+---
+source_id: augustine-enchiridion
+author: Augustine of Hippo
+title: Enchiridion ad Laurentium de fide, spe et caritate (Handbook on Faith, Hope and Love)
+date: ca. 421
+source_type: patristic
+language: la
+edition: CCSL 46; PL 40, 231–290
+location: Chapter II, 3 (PL 40, 236)
+original_quote: "Quoniam vero Deus omnipotens... quoniam summe bonus est, nullum prorsus malum in operibus suis esse permitteret, nisi usque adeo esset omnipotens et bonus, ut etiam de malo facere posset bonum."
+translation: "For almighty God... because he is supremely good, would never permit any evil whatsoever to exist in his works, if he were not so all-powerful and good that he could even bring good out of evil. (provisional translation)"
+paraphrase: Augustine states that God would not allow any evil to exist in his works unless he were powerful and good enough to bring good out of that evil. This is the formulation embedded in CCC §311.
+verification_status: VERIFIED
+notes: "This is the exact text cited in CCC §311 (note 177). The chapter is \"Enchiridion II, 3\" in the PL critical apparatus. The Latin is the most reliable; English translations vary slightly; the rendering above is provisional and clearly marked."
+supports_nodes:
+  - POE-005
+  - POE-015
+changes: []

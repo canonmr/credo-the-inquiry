@@ -1,0 +1,87 @@
+---
+export interface Props {
+  sources: Array<{
+    source_id: string;
+    title: string;
+    author: string;
+    date: string;
+    source_type: string;
+    language: string;
+    edition: string;
+    location: string;
+    original_quote: string;
+    translation?: string;
+    paraphrase?: string;
+    verification_status: 'VERIFIED' | 'PARTIALLY VERIFIED' | 'UNVERIFIED' | 'DISPUTED';
+    notes?: string;
+  }>;
+  lang: 'id' | 'en';
+}
+
+const p = Astro.props as Props;
+const isId = p.lang === 'id';
+---
+
+<details class="source-drawer" aria-labelledby="sources-drawer-heading">
+  <summary id="sources-drawer-heading">
+    <span>
+      {
+        isId
+          ? `Sumber yang dirujuk dalam bab ini (${p.sources.length})`
+          : `Sources cited in this chapter (${p.sources.length})`
+      }
+    </span>
+  </summary>
+  <div class="body">
+    {
+      p.sources.map((s) => (
+        <article class="source-card" id={s.source_id}>
+          <div class="meta">
+            <span class="id">{s.source_id}</span>
+            <span
+              class={`verif ${s.verification_status === 'PARTIALLY VERIFIED' ? 'PARTIALLY' : s.verification_status}`}
+            >
+              {s.verification_status}
+            </span>
+          </div>
+          <h3 style="font-family: var(--font-sans); font-size: var(--fs-h3); margin: 0 0 4px 0;">
+            {s.title}
+          </h3>
+          <div class="meta" style="margin-bottom: var(--gap-1);">
+            <span>{s.author}</span>
+            <span>·</span>
+            <span>{s.date}</span>
+            <span>·</span>
+            <span>{s.source_type}</span>
+            <span>·</span>
+            <span>{s.language}</span>
+          </div>
+          <div class="meta" style="margin-bottom: var(--gap-2);">
+            <span>{s.edition}</span>
+            <span>·</span>
+            <span>{s.location}</span>
+          </div>
+          <h4 style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft); margin-bottom: 4px;">
+            {isId ? 'Kutipan asli' : 'Original quote'}
+          </h4>
+          <blockquote class="quote">{s.original_quote}</blockquote>
+          {s.translation && (
+            <>
+              <h4 style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-ink-soft); margin-bottom: 4px;">
+                {isId ? 'Terjemahan' : 'Translation'}
+              </h4>
+              <blockquote class="quote" style="border-left-color: var(--color-accent-2);">
+                {s.translation}
+              </blockquote>
+            </>
+          )}
+          {s.paraphrase && (
+            <p style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--color-ink-soft);">
+              <strong>{isId ? 'Parafrase:' : 'Paraphrase:'}</strong> {s.paraphrase}
+            </p>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</details>
