@@ -188,3 +188,31 @@ export const SAL_MAP: MapLayout = {
     ['SAL-003', 'SAL-007', 'is framed by'],
   ],
 };
+
+export const SYN_MAP: MapLayout = {
+  nodes: {
+    'SYN-001': [70, 70, 1],
+    'SYN-002': [310, 70, 1],
+    'SYN-003': [550, 70, 1],
+    'SYN-004': [70, 220, 2],
+    'SYN-005': [250, 220, 2],
+    'SYN-006': [430, 220, 2],
+    'SYN-007': [610, 220, 2],
+    'SYN-008': [240, 370, 3],
+    'SYN-009': [480, 370, 3],
+  },
+  edges: [
+    ['SYN-001', 'SYN-002', 'leads to'],
+    ['SYN-002', 'SYN-003', 'contrasts'],
+    ['SYN-003', 'SYN-004', 'is framed by'],
+    ['SYN-004', 'SYN-005', 'extends'],
+    ['SYN-005', 'SYN-006', 'faces'],
+    ['SYN-006', 'SYN-007', 'is tested by'],
+    ['SYN-007', 'SYN-008', 'is met by'],
+    ['SYN-008', 'SYN-009', 'is answered by'],
+    ['SYN-004', 'SYN-008', 'is targeted by'],
+    ['SYN-005', 'SYN-009', 'is held by'],
+    ['SYN-002', 'SYN-009', 'is held by'],
+    ['SYN-006', 'SYN-009', 'opens'],
+  ],
+};

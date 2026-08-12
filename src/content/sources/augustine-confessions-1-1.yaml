@@ -1,0 +1,17 @@
+---
+source_id: augustine-confessions-1-1
+author: "Augustine of Hippo"
+title: "Confessions 1.1.1 — The restless heart"
+date: "c. 397-400"
+source_type: primary-theological
+language: en
+edition: "Augustine, Confessions, Book 1, chapter 1 (various translations)"
+location: Confessions 1.1.1
+original_quote: "You have made us for yourself, and our heart is restless until it rests in you."
+translation: "(Traditional English rendering; the Latin: 'fecisti nos ad te et inquietum est cor nostrum donec requiescat in te.')"
+paraphrase: "Augustine opens the Confessions with the claim that the human heart is made for God and cannot rest short of him. The inquiry's end echoes it: the restlessness that began it."
+verification_status: VERIFIED
+notes: "The Latin text is certain; the English is the standard traditional rendering."
+supports_nodes:
+  - SYN-009
+changes: []
