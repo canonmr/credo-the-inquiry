@@ -1,0 +1,17 @@
+---
+source_id: constantinople-iii-681
+author: "Third Council of Constantinople (Constantinople III)"
+title: "Third Council of Constantinople (680-681) — the condemnation of Pope Honorius I"
+date: "681"
+source_type: historical
+language: en
+edition: English translation of the council's decree (DS 550-552); wording varies across editions
+location: "Decree of the Sixth Ecumenical Council (681), anathemas"
+original_quote: "After we had laid aside all carnal affections, we had the council read the letters written by Sergius to Cyrus... and those addressed by Honorius to Sergius... and we found that these documents agreed with the doctrines of the impious sect of Apollinaris... we have decided that Honorius, who was Pope of elder Rome, shall be anathematized and cast out of the holy church of God."
+translation: "(English translation; wording varies across editions)"
+paraphrase: "The Sixth Ecumenical Council (Constantinople III, 681) condemned Pope Honorius I as a heretic (Monothelitism) and anathematized him by name — a later pope of Rome confirmed the condemnation."
+verification_status: PARTIALLY VERIFIED
+notes: "WARNING: 'original_quote' is a controlled rendering of the council decree (DS 552); translations differ. The historical fact — that an ecumenical council condemned and anathematized a deceased pope by name, and later popes confirmed it — is certain."
+supports_nodes:
+  - AUT-006
+changes: []

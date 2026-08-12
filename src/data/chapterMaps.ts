@@ -103,3 +103,32 @@ export const SCR_MAP: MapLayout = {
     ['SCR-005', 'SCR-008', 'informs'],
   ],
 };
+
+export const AUT_MAP: MapLayout = {
+  nodes: {
+    'AUT-001': [70, 70, 1],
+    'AUT-002': [310, 70, 1],
+    'AUT-003': [550, 70, 1],
+    'AUT-004': [70, 220, 2],
+    'AUT-005': [250, 220, 2],
+    'AUT-006': [430, 220, 2],
+    'AUT-007': [610, 220, 2],
+    'AUT-008': [240, 370, 3],
+    'AUT-009': [480, 370, 3],
+  },
+  edges: [
+    ['AUT-001', 'AUT-002', 'grounds'],
+    ['AUT-001', 'AUT-003', 'grounds'],
+    ['AUT-002', 'AUT-004', 'feeds'],
+    ['AUT-003', 'AUT-004', 'feeds'],
+    ['AUT-003', 'AUT-006', 'leads to'],
+    ['AUT-004', 'AUT-005', 'is met by'],
+    ['AUT-004', 'AUT-006', 'is met by'],
+    ['AUT-005', 'AUT-009', 'frames'],
+    ['AUT-006', 'AUT-007', 'leads to'],
+    ['AUT-006', 'AUT-009', 'feeds'],
+    ['AUT-007', 'AUT-008', 'informs'],
+    ['AUT-008', 'AUT-009', 'raises'],
+    ['AUT-004', 'AUT-009', 'is targeted by'],
+  ],
+};
