@@ -1,0 +1,17 @@
+---
+source_id: ccc-105
+author: Catholic Church (Catechism of the Catholic Church, 2nd ed.)
+title: "CCC §105 — God is the author of Sacred Scripture"
+date: "1997"
+source_type: church-document
+language: en
+edition: English translation for the United States, 1994 (2nd ed. 1997)
+location: Part One, Section One, Chapter Two, Article 3, §105
+original_quote: "God is the author of Sacred Scripture. 'The divinely revealed realities, which are contained and presented in the text of Sacred Scripture, have been written down under the inspiration of the Holy Spirit.'"
+translation: "(official USCCB English translation; reproduced verbatim)"
+paraphrase: "The Catechism affirms that God is the author of Scripture, quoting Dei Verbum 11: the divinely revealed realities contained in Scripture were written under the inspiration of the Holy Spirit."
+verification_status: VERIFIED
+notes: "CCC §105 opens the article 'The Holy Spirit, interpreter of Scripture.' It restates DV 11."
+supports_nodes:
+  - SCR-003
+changes: []

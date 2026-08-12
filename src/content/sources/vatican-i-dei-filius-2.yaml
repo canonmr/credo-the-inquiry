@@ -1,0 +1,18 @@
+---
+source_id: vatican-i-dei-filius-2
+author: "First Vatican Council (Dei Filius)"
+title: "Vatican I, Dei Filius, ch. 2 — Revelation and the written word"
+date: "1870"
+source_type: church-document
+language: en
+edition: Dei Filius, chapter 2, 'On Revelation' (Denzinger 3006-3008)
+location: Chapter 2, section 2 (DS 3006-3008)
+original_quote: "These books the Church holds to be sacred and canonical, not because she put them together on her own authority after they had been composed by mere human industry, nor simply because they contain revelation without error, but because, written under the inspiration of the Holy Spirit, they have God for their author and have been handed on as such to the Church herself."
+translation: "(Official English translation of Dei Filius, ch. 2, DS 3006; wording may vary slightly across editions.)"
+paraphrase: "Vatican I teaches that the books are sacred and canonical because God is their author (under the inspiration of the Holy Spirit) and they were handed on as such to the Church — not because the Church manufactured them by its own authority."
+verification_status: PARTIALLY VERIFIED
+notes: "WARNING: 'original_quote' is a controlled paraphrase of Dei Filius ch. 2 (DS 3006); exact translation wording varies. The doctrinal content is standard."
+supports_nodes:
+  - SCR-002
+  - SCR-004
+changes: []

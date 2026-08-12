@@ -77,3 +77,29 @@ export const REV_MAP: MapLayout = {
     ['REV-004', 'REV-009', 'raises'],
   ],
 };
+
+export const SCR_MAP: MapLayout = {
+  nodes: {
+    'SCR-001': [70, 70, 1],
+    'SCR-002': [310, 70, 1],
+    'SCR-003': [550, 70, 1],
+    'SCR-004': [70, 220, 2],
+    'SCR-005': [250, 220, 2],
+    'SCR-006': [430, 220, 2],
+    'SCR-007': [610, 220, 2],
+    'SCR-008': [240, 370, 3],
+    'SCR-009': [480, 370, 3],
+  },
+  edges: [
+    ['SCR-001', 'SCR-005', 'feeds'],
+    ['SCR-002', 'SCR-007', 'raises'],
+    ['SCR-003', 'SCR-004', 'specifies'],
+    ['SCR-003', 'SCR-009', 'is tested by'],
+    ['SCR-005', 'SCR-006', 'reframes'],
+    ['SCR-006', 'SCR-008', 'guides'],
+    ['SCR-007', 'SCR-009', 'feeds'],
+    ['SCR-004', 'SCR-009', 'is tested by'],
+    ['SCR-001', 'SCR-008', 'grounds'],
+    ['SCR-005', 'SCR-008', 'informs'],
+  ],
+};
