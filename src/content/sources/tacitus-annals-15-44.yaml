@@ -1,0 +1,18 @@
+---
+source_id: tacitus-annals-15-44
+author: "Tacitus, Annals 15.44 (trans. A. J. Church and W. J. Brodribb)"
+title: "Annals 15.44 — 'Christus... was executed by sentence of the procurator Pontius Pilate'"
+date: "c. 116"
+source_type: historical
+language: en
+edition: "Church & Brodribb translation (public domain)"
+location: Annals 15.44
+original_quote: "Consequently, to get rid of the report, Nero fastened the guilt and inflicted the most exquisite tortures on a class hated for their abominations, called Christians by the populace. Christus, from whom the name had its origin, suffered the extreme penalty during the reign of Tiberius at the hands of one of our procurators, Pontius Pilatus."
+translation: "(Church & Brodribb; reproduced verbatim)"
+paraphrase: "A Roman historian, writing c. 116, independently attests that a man called Christus was executed under Pontius Pilate during the reign of Tiberius — the only non-Christian Roman witness of the first century to the execution."
+verification_status: PARTIALLY VERIFIED
+notes: "Controlled translation: Church & Brodribb's public-domain rendering is standard but not a critical edition. Attests the fact of execution, not the Christian claims about Christ. Written after the fact, from Roman records or hearsay."
+supports_nodes:
+  - CHR-002
+  - CHR-007
+changes: []

@@ -1,0 +1,18 @@
+---
+source_id: john-3-16
+author: "Gospel of John (New Revised Standard Version)"
+title: "John 3:16 — 'For God so loved the world that he gave his only Son'"
+date: "c. 90-100"
+source_type: biblical-text
+language: en
+edition: NRSV
+location: John 3:16
+original_quote: "For God so loved the world that he gave his only Son, so that everyone who believes in him may not perish but may have eternal life."
+translation: "(NRSV; reproduced verbatim)"
+paraphrase: "The claim that God's love for the world is the motive of the sending of the Son, and that belief in him is the way to eternal life. The church summarizes its whole teaching in this verse."
+verification_status: VERIFIED
+notes: "NRSV text. Summarizes the claim about the purpose of Christ and the life the believer is offered."
+supports_nodes:
+  - CHR-001
+  - CHR-009
+changes: []

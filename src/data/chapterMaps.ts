@@ -132,3 +132,31 @@ export const AUT_MAP: MapLayout = {
     ['AUT-004', 'AUT-009', 'is targeted by'],
   ],
 };
+
+export const CHR_MAP: MapLayout = {
+  nodes: {
+    'CHR-001': [70, 70, 1],
+    'CHR-002': [310, 70, 1],
+    'CHR-003': [550, 70, 1],
+    'CHR-004': [70, 220, 2],
+    'CHR-005': [250, 220, 2],
+    'CHR-006': [430, 220, 2],
+    'CHR-007': [610, 220, 2],
+    'CHR-008': [240, 370, 3],
+    'CHR-009': [480, 370, 3],
+  },
+  edges: [
+    ['CHR-001', 'CHR-002', 'grounds'],
+    ['CHR-001', 'CHR-003', 'grounds'],
+    ['CHR-003', 'CHR-004', 'leads to'],
+    ['CHR-002', 'CHR-007', 'feeds'],
+    ['CHR-003', 'CHR-007', 'feeds'],
+    ['CHR-004', 'CHR-007', 'raises'],
+    ['CHR-004', 'CHR-008', 'is framed by'],
+    ['CHR-005', 'CHR-008', 'is framed by'],
+    ['CHR-005', 'CHR-006', 'extends'],
+    ['CHR-001', 'CHR-006', 'grounds'],
+    ['CHR-007', 'CHR-009', 'is targeted by'],
+    ['CHR-008', 'CHR-009', 'frames'],
+  ],
+};

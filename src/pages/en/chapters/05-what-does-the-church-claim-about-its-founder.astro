@@ -1,0 +1,77 @@
+---
+import Layout from '../../../components/Layout.astro';
+import EpistemicLedger from '../../../components/EpistemicLedger.astro';
+import ArgumentMap from '../../../components/ArgumentMap.astro';
+import SourceDrawer from '../../../components/SourceDrawer.astro';
+import { CHR_MAP } from '../../../data/chapterMaps';
+import { getCollection } from 'astro:content';
+
+const lang = 'en' as const;
+const slug = '05-what-does-the-church-claim-about-its-founder';
+
+const allChapters = await getCollection('chapters', ({ data }) => data.language === 'en');
+const chapter = allChapters.find((c) => c.data.chapter_slug === slug);
+if (!chapter) throw new Error(`Chapter not found: ${slug}`);
+
+const { Content } = await chapter.render();
+
+const allSources = await getCollection('sources');
+const sourcesByID = new Map(allSources.map((s) => [s.data.source_id, s]));
+
+const chapterSources = chapter.data.sources_used
+  .map((id) => sourcesByID.get(id))
+  .filter((s): s is NonNullable<typeof s> => Boolean(s))
+  .map((s) => ({
+    source_id: s.data.source_id,
+    title: s.data.title,
+    author: s.data.author,
+    date: s.data.date,
+    source_type: s.data.source_type,
+    language: s.data.language,
+    edition: s.data.edition,
+    location: s.data.location,
+    original_quote: s.data.original_quote,
+    translation: s.data.translation,
+    paraphrase: s.data.paraphrase,
+    verification_status: s.data.verification_status,
+    notes: s.data.notes,
+  }));
+---
+
+<Layout
+  title={chapter.data.title}
+  lang={lang}
+  description="Chapter 5 — What does the church claim about its founder?"
+>
+  <p
+    style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-faint); margin: 0 0 var(--gap-1) 0;"
+  >
+    Chapter 5
+  </p>
+
+  <Content />
+
+  <ArgumentMap
+    lang={lang}
+    nodes={CHR_MAP.nodes}
+    edges={CHR_MAP.edges}
+    title="Argument map (9 nodes, 3 layers)"
+    intro="Tap a node to open its full record. Arrows show selected structural dependencies, not every relation."
+    legend={[
+      'Layer 1 — the claims stated',
+      'Layer 2 — the claims specified',
+      'Layer 3 — testing and objection',
+    ]}
+    layerLabels={['L1', 'L2', 'L3']}
+    ariaLabel="Map of 9 CHR nodes"
+  />
+
+  <EpistemicLedger
+    established={chapter.data.epistemic_ledger.established}
+    contested={chapter.data.epistemic_ledger.contested}
+    not_established={chapter.data.epistemic_ledger.not_established}
+    lang={lang}
+  />
+
+  <SourceDrawer sources={chapterSources} lang={lang} />
+</Layout>

@@ -1,0 +1,17 @@
+---
+source_id: nicea-creed-325
+author: "First Council of Nicaea (325), Creed of Nicaea"
+title: "The Nicene Creed (325) — 'true God from true God, begotten, not made, consubstantial with the Father'"
+date: "325"
+source_type: church-document
+language: en
+edition: "English translation of the Creed of Nicaea (325)"
+location: "Creed of the First Council of Nicaea, 325"
+original_quote: "We believe in one God, the Father almighty, maker of all things visible and invisible; and in one Lord Jesus Christ, the Son of God, begotten from the Father, only-begotten, that is, from the substance of the Father, God from God, light from light, true God from true God, begotten not made, of one substance with the Father, through whom all things came into being."
+translation: "(Controlled translation from the Greek of the Creed of 325)"
+paraphrase: "The first ecumenical council defined the church's claim about Christ: he is 'of one substance' (homoousios) with the Father — true God, not a creature. This is the church's definitive claim about the divinity of Christ."
+verification_status: PARTIALLY VERIFIED
+notes: "Controlled translation: rendered from the standard critical text of the Creed of 325 (cf. Kelly, Early Christian Creeds). The term 'homoousios' was chosen precisely to exclude the position that Christ was a creature."
+supports_nodes:
+  - CHR-004
+changes: []

@@ -1,0 +1,17 @@
+---
+source_id: josephus-antiquities-18-63-64
+author: "Flavius Josephus, Antiquities of the Jews 18.63-64 (trans. W. Whiston)"
+title: "Antiquities 18.63-64 — The 'Testimonium Flavianum'"
+date: "c. 93-94"
+source_type: historical
+language: en
+edition: "Whiston translation (public domain)"
+location: Antiquities of the Jews 18.63-64
+original_quote: "Now there was about this time Jesus, a wise man, if it be lawful to call him a man, for he was a doer of wonderful works, a teacher of such men as receive the truth with pleasure. He drew over to him both many of the Jews and many of the Gentiles. He was [the] Christ. And when Pilate, at the suggestion of the principal men amongst us, had condemned him to the cross, those that loved him at the first did not forsake him; for he appeared to them alive again the third day, as the divine prophets had foretold these and ten thousand other wonderful things concerning him. And the tribe of Christians, so named from him, are not extinct at this day."
+translation: "(Whiston; reproduced verbatim)"
+paraphrase: "A Jewish historian writing in the 90s attests that a teacher named Jesus drew followers, was condemned to the cross by Pilate, and that his followers claimed he appeared alive again. Scholars dispute how much of this text is original and how much was expanded by Christian copyists."
+verification_status: PARTIALLY VERIFIED
+notes: "Controlled translation: Whiston's public-domain version is standard but archaic. The passage is the disputed 'Testimonium Flavianum': most scholars accept a historical core (the execution by Pilate) and consider parts (e.g., 'He was the Christ') Christian interpolation."
+supports_nodes:
+  - CHR-002
+changes: []
