@@ -160,3 +160,31 @@ export const CHR_MAP: MapLayout = {
     ['CHR-008', 'CHR-009', 'frames'],
   ],
 };
+
+export const SAL_MAP: MapLayout = {
+  nodes: {
+    'SAL-001': [190, 70, 1],
+    'SAL-002': [430, 70, 1],
+    'SAL-003': [670, 70, 1],
+    'SAL-004': [70, 220, 2],
+    'SAL-005': [250, 220, 2],
+    'SAL-006': [430, 220, 2],
+    'SAL-007': [610, 220, 2],
+    'SAL-008': [240, 370, 3],
+    'SAL-009': [480, 370, 3],
+  },
+  edges: [
+    ['SAL-001', 'SAL-002', 'leads to'],
+    ['SAL-002', 'SAL-003', 'leads to'],
+    ['SAL-003', 'SAL-004', 'raises'],
+    ['SAL-003', 'SAL-006', 'ends in'],
+    ['SAL-004', 'SAL-005', 'opens'],
+    ['SAL-004', 'SAL-006', 'opens'],
+    ['SAL-005', 'SAL-006', 'contrasts'],
+    ['SAL-001', 'SAL-008', 'is tested by'],
+    ['SAL-002', 'SAL-008', 'is tested by'],
+    ['SAL-006', 'SAL-009', 'is targeted by'],
+    ['SAL-007', 'SAL-009', 'frames'],
+    ['SAL-003', 'SAL-007', 'is framed by'],
+  ],
+};

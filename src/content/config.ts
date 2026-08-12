@@ -6,7 +6,7 @@ import { defineCollection, z } from 'astro:content';
 const argumentNodes = defineCollection({
   type: 'content',
   schema: z.object({
-    id: z.string().regex(/^(POE|REV|SCR|AUT|CHR)-\d{3}$/),
+    id: z.string().regex(/^(POE|REV|SCR|AUT|CHR|SAL)-\d{3}$/),
     layer: z.union([z.literal(1), z.literal(2), z.literal(3)]),
     title: z.string(),
     language: z.enum(['id', 'en']).optional().default('en'),

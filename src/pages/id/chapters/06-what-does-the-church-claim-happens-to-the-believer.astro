@@ -1,0 +1,77 @@
+---
+import Layout from '../../../components/Layout.astro';
+import EpistemicLedger from '../../../components/EpistemicLedger.astro';
+import ArgumentMap from '../../../components/ArgumentMap.astro';
+import SourceDrawer from '../../../components/SourceDrawer.astro';
+import { SAL_MAP } from '../../../data/chapterMaps';
+import { getCollection } from 'astro:content';
+
+const lang = 'id' as const;
+const slug = '06-what-does-the-church-claim-happens-to-the-believer';
+
+const allChapters = await getCollection('chapters', ({ data }) => data.language === 'id');
+const chapter = allChapters.find((c) => c.data.chapter_slug === slug);
+if (!chapter) throw new Error(`Chapter not found: ${slug}`);
+
+const { Content } = await chapter.render();
+
+const allSources = await getCollection('sources');
+const sourcesByID = new Map(allSources.map((s) => [s.data.source_id, s]));
+
+const chapterSources = chapter.data.sources_used
+  .map((id) => sourcesByID.get(id))
+  .filter((s): s is NonNullable<typeof s> => Boolean(s))
+  .map((s) => ({
+    source_id: s.data.source_id,
+    title: s.data.title,
+    author: s.data.author,
+    date: s.data.date,
+    source_type: s.data.source_type,
+    language: s.data.language,
+    edition: s.data.edition,
+    location: s.data.location,
+    original_quote: s.data.original_quote,
+    translation: s.data.translation,
+    paraphrase: s.data.paraphrase,
+    verification_status: s.data.verification_status,
+    notes: s.data.notes,
+  }));
+---
+
+<Layout
+  title={chapter.data.title_id || chapter.data.title}
+  lang={lang}
+  description="Bab 6 — Apa yang diklaim gereja terjadi atas orang beriman?"
+>
+  <p
+    style="font-family: var(--font-sans); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-soft); margin: 0 0 var(--gap-1) 0;"
+  >
+    Bab 6
+  </p>
+
+  <Content />
+
+  <ArgumentMap
+    lang={lang}
+    nodes={SAL_MAP.nodes}
+    edges={SAL_MAP.edges}
+    title="Peta argumen (9 langkah, 3 lapisan)"
+    intro="Ketuk sebuah titik untuk membaca uraian lengkapnya. Garis menunjukkan keterkaitan yang dipilih, bukan semua keterkaitan."
+    legend={[
+      'Lapisan 1 — klaim dinyatakan',
+      'Lapisan 2 — klaim diperinci',
+      'Lapisan 3 — pengujian dan keberatan',
+    ]}
+    layerLabels={['L1', 'L2', 'L3']}
+    ariaLabel="Peta argumen dengan 9 langkah"
+  />
+
+  <EpistemicLedger
+    established={chapter.data.epistemic_ledger.established}
+    contested={chapter.data.epistemic_ledger.contested}
+    not_established={chapter.data.epistemic_ledger.not_established}
+    lang={lang}
+  />
+
+  <SourceDrawer sources={chapterSources} lang={lang} />
+</Layout>
