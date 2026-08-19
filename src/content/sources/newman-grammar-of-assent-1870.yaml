@@ -1,0 +1,17 @@
+---
+source_id: newman-grammar-of-assent-1870
+author: "John Henry Newman"
+title: "An Essay in Aid of a Grammar of Assent — the illative sense"
+date: "1870"
+source_type: primary-philosophical
+language: en
+edition: "Newman, Grammar of Assent (Longmans, Green & Co.; Newman Reader digitization, newmanreader.org)"
+location: "Grammar of Assent, ch. 9, 'The Illative Sense', §§1-2 (pp. 345-346, 350, 352, 1906 ed.)"
+original_quote: "I have already said that the sole and final judgment on the validity of an inference in concrete matter is committed to the personal action of the ratiocinative faculty, the perfection or virtue of which I have called the Illative Sense. [...] there is no ultimate test of truth besides the testimony born to truth by the mind itself, and that this phenomenon, perplexing as we may find it, is a normal and inevitable characteristic of the mental constitution of a being like man on a stage such as the world. [...] as if on set purpose, He has made this path of thought rugged and circuitous above other investigations, that the very discipline inflicted on our minds in finding Him, may mould them into due devotion to Him when He is found. 'Verily Thou art a hidden God, the God of Israel, the Saviour,' is the very law of His dealings with us."
+translation: "(Newman wrote in English; reproduced verbatim from the Longmans edition.)"
+paraphrase: "Newman menempatkan penilaian terakhir atas validitas inferensi dalam hal-hal konkret pada 'illative sense' — akal budi yang hidup yang menilai, bukan aparatus logika formal; tidak ada uji akhir kebenaran selain kesaksian pikiran itu sendiri, dan itu normal serta tak terhindarkan dalam konstitusi mental manusia. Ia menambahkan bahwa jalan pemikiran religius sengaja dibuat kasar dan berliku oleh Allah yang menyembunyikan diri ('Verily Thou art a hidden God' — Yes 45:15; GA ch. 9, hal. 352). Ini posisi jalan-tengah: penilaian akhir inferensi konkret ada pada illative sense — bukan gerakan buta, bukan demonstrasi formal."
+verification_status: PARTIALLY VERIFIED
+notes: "Kutipan diverifikasi verbatim dari teks primer (Newman Reader, ed. Longmans), ch. 9 §§1-2; paginasi mengikuti edisi 1906. Ketiga kutipan (hal. 345-346, 350, 352) ada dalam original_quote sehingga parafrase didukung penuh oleh teks. Sengaja tidak ditandai VERIFIED: menunggu konfirmasi peninjau atas edisi dan paginasi."
+supports_nodes:
+  - SYN-010
+changes: []

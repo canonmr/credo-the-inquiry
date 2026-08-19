@@ -1,0 +1,17 @@
+---
+source_id: vatican-i-dei-filius-3
+author: "First Vatican Council (Dei Filius)"
+title: "Vatican I, Dei Filius, ch. 3 — Faith, reason, and the rejection of fideism"
+date: "1870"
+source_type: church-document
+language: la
+edition: "Dei Filius, 24 Aprilis 1870 (vatican.va); English rendering per Acta et decreta, Rome 1872"
+location: "Chapter 3, 'De Fide' (DS 3009-3010); canons (DS 3026, 3032, 3033, 3035)"
+original_quote: "Ut nihilominus fidei nostrae obsequium rationi consentaneum esset, voluit Deus cum internis Spiritus Sancti auxiliis externa iungi revelationis suae argumenta, facta scilicet divina, atque imprimis miracula et prophetias, quae cum Dei omnipotentiam et infinitam scientiam luculenter commonstrent, divinae revelationis signa sunt certissima et omnium intelligentiae accommodata. [...] Licet autem fidei assensus nequaquam sit motus animi caecus: nemo tamen evangelicae praedicationi consentire potest, sicut oportet ad salutem consequendam, absque illuminatione et inspiratione Spiritus sancti, qui dat omnibus suavitatem in consentiendo et credendo veritati."
+translation: "Nevertheless, in order that the submission of our faith should be in accordance with reason, it was God's will that there should be linked to the internal assistance of the holy Spirit external indications of his revelation, that is to say divine acts, and first and foremost miracles and prophecies, which clearly demonstrating as they do the omnipotence and infinite knowledge of God, are the most certain signs of revelation and are suited to the understanding of all. [...] Now, although the assent of faith is by no means a blind movement of the mind, yet no one can accept the gospel preaching in the way that is necessary for achieving salvation without the inspiration and illumination of the holy Spirit, who gives to all facility in accepting and believing the truth."
+paraphrase: "Vatikan I mengajar dua hal yang menandai batas fideisme: (1) persetujuan iman bukan gerakan pikiran yang buta — ketaatan iman dikehendaki selaras dengan akal budi, karena Allah menggabungkan bantuan Roh Kudus dengan tanda-tanda eksternal, terutama mukjizat dan nubuat, sebagai tanda wahyu yang paling pasti dan sesuai untuk akal semua orang (DS 3009-3010); (2) Allah dapat diketahui dengan pasti oleh akal budi natural dari ciptaan (ch. 2, DS 3004; Rom 1:20), iman harus dibedakan dari pengetahuan natural (kanon III.2, DS 3032), dan orang tidak boleh digerakkan kepada iman hanya oleh pengalaman internal atau ilham pribadi (kanon III.3, DS 3033) — namun persetujuan iman juga bebas, tidak diproduksi secara perlu oleh argumen akal budi (kanon III.5, DS 3035)."
+verification_status: PARTIALLY VERIFIED
+notes: "Latin diverifikasi verbatim dari vatican.va (Constitutio dogmatica Dei Filius, 24 Aprilis 1870); terjemahan Inggris mengikuti rendering resmi (papalencyclicals.net, Acta et decreta, Rome 1872). Nomor Denzinger dicocokkan dengan edisi daring Denzinger (clerus.org): kanon tanda eksternal = DS 3033, bukan 3034. Nomor DS 3017 (ch. 4, 'nulla umquam vera dissensio') belum diverifikasi dalam sesi ini — kutipan ch. 4 dipakai tanpa nomor. Sengaja tidak ditandai VERIFIED: menunggu konfirmasi peninjau. Language 'la' berbeda dari rekor saudara (vatican-i-dei-filius-2, 'en'); lihat catatan follow-up Task 3."
+supports_nodes:
+  - SYN-010
+changes: []

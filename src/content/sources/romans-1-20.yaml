@@ -9,9 +9,11 @@ edition: NRSV
 location: Romans 1:19-20
 original_quote: "Ever since the creation of the world his eternal power and divine nature, invisible though they are, have been understood and seen through the things he has made. So they are without excuse."
 translation: "(NRSV; reproduced verbatim)"
-paraphrase: "Paul argues that what can be known about God is plain to everyone because God has shown it: the created order itself manifests God's eternal power and divine nature, so that no one stands without a witness to the Creator."
+paraphrase: "Paulus berargumen bahwa apa yang dapat diketahui tentang Allah nyata bagi setiap orang karena Allah telah menunjukkannya: tatanan ciptaan itu sendiri mewujudkan kuasa kekal dan keilahian Allah, sehingga tak seorang pun berdiri tanpa saksi bagi Sang Pencipta."
 verification_status: VERIFIED
 notes: "NRSV text. The same passage is invoked by the Catechism (§36, note 16) in its treatment of man's capacity to know God from creation."
 supports_nodes:
   - REV-005
-changes: []
+  - SYN-010
+changes:
+  - "2026-08-19: supports_nodes += SYN-010 — node baru ketegangan epistemik (Bab 7) merujuk Rom 1:20 sebagai dasar ajaran Vatikan I tentang pengetahuan natural akan Allah; diverifikasi oleh opencode, menunggu peninjauan."
